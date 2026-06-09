@@ -5,187 +5,264 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>RMPS Publishing — Surgical Instrument Education</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
+:root {
+  --navy: #0c2340;
+  --navy-mid: #163858;
+  --blue-light: #d6e8f7;
+  --blue-soft: #e8f3fc;
+  --white: #ffffff;
+  --orange: #e8761a;
+  --orange-hover: #cf6515;
+  --orange-light: #fff3e8;
+  --text-dark: #0c1f35;
+  --text-mid: #3d5a78;
+  --text-light: #6b8aaa;
+  --border: #ccdff0;
+  --green: #1a7a4a;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Source Sans 3',sans-serif;background:#fff;color:#1a1a2e;line-height:1.6}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--text-dark);line-height:1.6;overflow-x:hidden}
 
-/* NAV */
-nav{background:#0d2540;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px}
-.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo-icon{width:38px;height:38px;background:#e8861a;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.nav-logo-icon svg{width:22px;height:22px;fill:#fff}
-.nav-logo-text{color:#fff;font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.2}
-.nav-logo-sub{color:#7fa8cc;font-size:11px;font-weight:300;font-family:'Source Sans 3',sans-serif;letter-spacing:0.5px}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{color:#a0bcd8;text-decoration:none;font-size:14px;font-weight:400;transition:color 0.2s}
+/* ── NAV ── */
+nav{background:var(--navy);position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.07)}
+.nav-wrap{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:66px}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo-mark{width:36px;height:36px;background:var(--orange);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.nav-logo-mark svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2}
+.nav-brand{color:#fff;font-family:'DM Serif Display',serif;font-size:16px;letter-spacing:0.2px}
+.nav-brand small{display:block;font-family:'DM Sans',sans-serif;color:#7faed4;font-size:10px;font-weight:300;letter-spacing:0.6px;margin-top:-2px}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:#a8c8e8;font-size:14px;text-decoration:none;font-weight:400;transition:color 0.15s}
 .nav-links a:hover{color:#fff}
-.nav-cta{background:#e8861a;color:#fff;font-size:14px;font-weight:500;padding:9px 22px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background 0.2s}
-.nav-cta:hover{background:#d4761a}
+.nav-order{background:var(--orange);color:#fff;font-size:13px;font-weight:600;padding:9px 22px;border-radius:7px;border:none;cursor:pointer;text-decoration:none;letter-spacing:0.3px;transition:background 0.15s}
+.nav-order:hover{background:var(--orange-hover)}
+@media(max-width:768px){.nav-links{display:none}}
 
-/* HERO */
-.hero{background:linear-gradient(160deg,#0d2540 0%,#1a3a5c 60%,#1e4a72 100%);padding:6rem 2rem 5rem}
-.hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:3rem;align-items:center}
-.hero-text{flex:1.3}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,134,26,0.15);border:1px solid rgba(232,134,26,0.4);color:#f0a84e;font-size:12px;font-weight:500;padding:6px 16px;border-radius:20px;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:1px}
-.hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:46px;font-weight:700;line-height:1.15;margin-bottom:1.2rem}
-.hero h1 em{color:#e8861a;font-style:normal}
-.hero-sub{color:#a0bcd8;font-size:17px;line-height:1.75;margin-bottom:2rem;max-width:520px;font-weight:300}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn-primary{background:#e8861a;color:#fff;padding:14px 28px;border-radius:7px;font-size:15px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block}
-.btn-primary:hover{background:#d4761a;transform:translateY(-1px)}
-.btn-outline{background:transparent;color:#fff;padding:14px 28px;border-radius:7px;font-size:15px;font-weight:400;border:1.5px solid rgba(255,255,255,0.4);cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.07)}
-.hero-stats{flex:0.7;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:2rem;min-width:240px}
-.hero-stats h3{color:#7fa8cc;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.5rem}
-.stat-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(255,255,255,0.08)}
-.stat-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.stat-num{color:#e8861a;font-family:'Playfair Display',serif;font-size:26px;font-weight:700;min-width:56px;line-height:1.1}
-.stat-label{color:#a0bcd8;font-size:13px;line-height:1.45;font-weight:300}
+/* ── HERO ── */
+.hero{background:var(--navy);padding:5rem 2rem 0;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none}
+.hero-wrap{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end}
+.hero-left{padding-bottom:5rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(232,118,26,0.15);border:1px solid rgba(232,118,26,0.35);color:#f5a05a;font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:0.8px;text-transform:uppercase}
+.hero-eyebrow svg{width:12px;height:12px;fill:currentColor}
+.hero h1{font-family:'DM Serif Display',serif;color:#fff;font-size:52px;line-height:1.1;margin-bottom:1.25rem;letter-spacing:-0.5px}
+.hero h1 em{color:var(--orange);font-style:italic}
+.hero-sub{color:#8ab8d8;font-size:17px;line-height:1.75;font-weight:300;margin-bottom:2rem;max-width:480px}
+.hero-ctas{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-hero{background:var(--orange);color:#fff;font-size:16px;font-weight:600;padding:15px 32px;border-radius:9px;border:none;cursor:pointer;text-decoration:none;letter-spacing:0.2px;transition:all 0.15s;display:inline-block}
+.btn-hero:hover{background:var(--orange-hover);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;font-size:15px;font-weight:400;padding:15px 24px;border-radius:9px;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;text-decoration:none;transition:all 0.15s;display:inline-block}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.06)}
+.hero-right{display:flex;flex-direction:column;gap:0;align-items:flex-end;position:relative}
+.hero-books{display:flex;gap:20px;align-items:flex-end;justify-content:center;padding-bottom:0}
+.book-img-wrap{position:relative;flex-shrink:0}
+.book-img-wrap img,.book-img-wrap .book-placeholder{width:160px;border-radius:10px 10px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,0.5);display:block}
+.book-img-wrap.large img,.book-img-wrap.large .book-placeholder{width:200px}
+.book-placeholder{background:linear-gradient(160deg,#1e4a72,#0c2340);height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px;text-align:center}
+.book-placeholder.large{height:290px}
+.book-placeholder.vet{background:linear-gradient(160deg,#1a5c3a,#0d3020)}
+.book-label{color:rgba(255,255,255,0.5);font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.book-title-text{color:#fff;font-family:'DM Serif Display',serif;font-size:13px;line-height:1.3;text-align:center}
+.book-icon{width:36px;height:36px;opacity:0.4;margin-bottom:4px}
+.hero-price-tag{position:absolute;top:-14px;right:-12px;background:var(--orange);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 10px rgba(232,118,26,0.4)}
 
-/* TRUST BAR */
-.trust-bar{background:#f2f6fa;border-bottom:1px solid #dce7f0;padding:1.1rem 2rem}
-.trust-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:center}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#4a6a88;font-weight:500}
-.trust-dot{width:7px;height:7px;border-radius:50%;background:#e8861a;flex-shrink:0}
+/* ── TRUST BAR ── */
+.trust-bar{background:#fff;border-bottom:1px solid var(--border);padding:1rem 2rem}
+.trust-wrap{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.25rem;justify-content:center;align-items:center}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text-mid);font-weight:500}
+.trust-check{width:18px;height:18px;background:var(--orange-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-check svg{width:9px;height:9px;stroke:var(--orange);fill:none;stroke-width:2.5}
 
-/* SECTIONS */
+/* ── SECTION BASE ── */
 .section{padding:5rem 2rem}
-.section-alt{background:#f7f9fc}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:3rem}
-.section-header h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#0d2540;margin-bottom:0.75rem}
-.section-header p{color:#5a7a96;font-size:16px;max-width:580px;margin:0 auto;font-weight:300;line-height:1.7}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-bg{background:linear-gradient(180deg,#fff 0%,var(--blue-soft) 100%)}
+.section-blue{background:var(--blue-soft)}
+.eyebrow{display:inline-block;font-size:11px;font-weight:600;color:var(--orange);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:0.75rem}
+.section-title{font-family:'DM Serif Display',serif;font-size:38px;color:var(--navy);line-height:1.15;margin-bottom:1rem;letter-spacing:-0.3px}
+.section-sub{font-size:17px;color:var(--text-mid);font-weight:300;line-height:1.7;max-width:600px}
+.section-header{margin-bottom:3.5rem}
 
-/* WHY CARDS */
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.why-card{background:#fff;border:1px solid #dce7f0;border-radius:12px;padding:1.75rem;transition:box-shadow 0.2s,transform 0.2s}
-.why-card:hover{box-shadow:0 4px 20px rgba(13,37,64,0.1);transform:translateY(-2px)}
-.why-icon{width:44px;height:44px;background:#e8f2fb;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.why-icon svg{width:22px;height:22px;stroke:#1a3a5c;fill:none;stroke-width:1.8}
-.why-card h3{font-size:15px;font-weight:600;color:#0d2540;margin-bottom:0.5rem}
-.why-card p{font-size:14px;color:#5a7a96;line-height:1.6;font-weight:300}
+/* ── AUDIENCE TOGGLE ── */
+.audience-section{padding:5rem 2rem;background:#fff}
+.audience-tabs{display:flex;gap:0;background:var(--blue-soft);border-radius:12px;padding:6px;max-width:400px;margin-bottom:3rem}
+.aud-tab{flex:1;padding:11px 20px;border-radius:8px;border:none;cursor:pointer;font-size:14px;font-weight:500;font-family:'DM Sans',sans-serif;background:transparent;color:var(--text-mid);transition:all 0.2s}
+.aud-tab.active{background:#fff;color:var(--navy);box-shadow:0 1px 6px rgba(0,0,0,0.1);font-weight:600}
+.audience-content{display:none}
+.audience-content.active{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.aud-text .eyebrow{display:block}
+.aud-text h2{font-family:'DM Serif Display',serif;font-size:34px;color:var(--navy);line-height:1.2;margin-bottom:1rem}
+.aud-text p{font-size:16px;color:var(--text-mid);line-height:1.75;font-weight:300;margin-bottom:1.5rem}
+.aud-cta{background:var(--navy);color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;display:inline-block;transition:background 0.15s}
+.aud-cta:hover{background:var(--navy-mid)}
+.aud-cta.vet{background:var(--green)}
+.aud-cta.vet:hover{background:#146040}
+.aud-visual{border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#e8f3fc,#d0e8f8);min-height:320px;display:flex;align-items:center;justify-content:center;position:relative}
+.aud-visual-inner{padding:2rem;text-align:center}
+.aud-badge{background:var(--navy);color:#fff;font-size:10px;font-weight:600;padding:5px 14px;border-radius:20px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.25rem;display:inline-block}
+.aud-badge.vet{background:var(--green)}
+.aud-book-mock{width:150px;background:linear-gradient(160deg,#1e4a72,#0c2340);border-radius:8px;padding:20px 16px;margin:0 auto 1rem;box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.aud-book-mock.vet{background:linear-gradient(160deg,#1a5c3a,#0d3020)}
+.aud-book-mock-title{color:#fff;font-family:'DM Serif Display',serif;font-size:14px;line-height:1.35;margin-bottom:12px;text-align:left}
+.aud-book-mock-line{height:2px;background:rgba(255,255,255,0.15);border-radius:1px;margin:5px 0}
+.aud-book-mock-line.accent{background:var(--orange);width:40%}
+.aud-book-mock-line.vet-accent{background:#4caf50;width:40%}
+.aud-price-bubble{background:#fff;border-radius:10px;padding:12px 18px;display:inline-block;box-shadow:0 2px 12px rgba(0,0,0,0.1);margin-top:0.5rem}
+.aud-price-bubble .price{font-family:'DM Serif Display',serif;font-size:28px;color:var(--navy);font-weight:400}
+.aud-price-bubble .price-label{font-size:12px;color:var(--text-light);margin-top:2px}
 
-/* PRODUCTS */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
-.product-card{background:#fff;border:1px solid #dce7f0;border-radius:14px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;display:flex;flex-direction:column}
-.product-card:hover{box-shadow:0 8px 30px rgba(13,37,64,0.13);transform:translateY(-3px)}
-.product-card.featured{border-color:#e8861a;border-width:2px}
-.product-top{background:#0d2540;padding:1.5rem}
-.product-top.vet{background:#1e5c40}
-.product-top.cards{background:#e8861a}
-.product-tag{font-size:10px;color:rgba(255,255,255,0.6);font-weight:500;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem}
-.product-top h3{color:#fff;font-family:'Playfair Display',serif;font-size:17px;font-weight:600;line-height:1.35}
+/* ── PRODUCTS ── */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.product-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;display:flex;flex-direction:column}
+.product-card:hover{box-shadow:0 10px 40px rgba(12,35,64,0.12);transform:translateY(-3px)}
+.product-card.featured{border-color:var(--orange);border-width:2px}
+.product-card-top{padding:1.5rem 1.5rem 1rem;background:linear-gradient(160deg,var(--navy),var(--navy-mid));position:relative}
+.product-card-top.vet-top{background:linear-gradient(160deg,#0d3020,#1a5c3a)}
+.product-card-top.cards-top{background:linear-gradient(160deg,#7a3800,var(--orange))}
+.featured-ribbon{position:absolute;top:14px;right:-1px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:4px 14px 4px 10px;border-radius:4px 0 0 4px;letter-spacing:0.5px}
+.product-tag{font-size:10px;color:rgba(255,255,255,0.55);font-weight:500;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem}
+.product-name{color:#fff;font-family:'DM Serif Display',serif;font-size:19px;line-height:1.3}
 .product-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
-.product-price-wrap{display:flex;align-items:baseline;gap:6px;margin-bottom:1rem}
-.product-price{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#0d2540}
-.product-price-label{font-size:13px;color:#7a96ac;font-weight:300}
-.product-features{list-style:none;margin-bottom:1.25rem;flex:1}
-.product-features li{font-size:13px;color:#5a7a96;padding:4px 0;display:flex;align-items:center;gap:8px}
-.check{width:16px;height:16px;background:#e8f2fb;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.check svg{width:9px;height:9px;stroke:#1a3a5c;fill:none;stroke-width:2.5}
-.product-btn{display:block;background:#0d2540;color:#fff;text-align:center;padding:11px;border-radius:7px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s;width:100%}
-.product-btn:hover{background:#1a3a5c}
-.product-btn.vet-btn{background:#1e5c40}
-.product-btn.vet-btn:hover{background:#155030}
-.product-btn.cards-btn{background:#e8861a}
-.product-btn.cards-btn:hover{background:#d4761a}
-.featured-badge{background:#e8861a;color:#fff;font-size:11px;font-weight:600;padding:4px 14px;border-radius:0 0 10px 0;display:inline-block;margin-bottom:0.5rem}
+.product-price-row{display:flex;align-items:baseline;gap:6px;margin-bottom:1.1rem}
+.product-price{font-family:'DM Serif Display',serif;font-size:32px;color:var(--navy)}
+.product-price-desc{font-size:13px;color:var(--text-light);font-weight:300}
+.product-features{list-style:none;flex:1;margin-bottom:1.25rem}
+.product-features li{font-size:13px;color:var(--text-mid);padding:5px 0;display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid #f0f6fc;line-height:1.4}
+.product-features li:last-child{border-bottom:none}
+.feat-dot{width:16px;height:16px;background:var(--blue-soft);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.feat-dot svg{width:8px;height:8px;stroke:var(--navy);fill:none;stroke-width:2.5}
+.feat-dot.vet-dot{background:#e0f5ec}
+.feat-dot.vet-dot svg{stroke:var(--green)}
+.feat-dot.cards-dot{background:var(--orange-light)}
+.feat-dot.cards-dot svg{stroke:var(--orange)}
+.product-order-btn{display:block;width:100%;padding:13px;background:var(--navy);color:#fff;font-size:14px;font-weight:600;text-align:center;border-radius:9px;border:none;cursor:pointer;text-decoration:none;transition:background 0.15s;letter-spacing:0.2px}
+.product-order-btn:hover{background:var(--navy-mid)}
+.product-order-btn.orange-btn{background:var(--orange)}
+.product-order-btn.orange-btn:hover{background:var(--orange-hover)}
+.product-order-btn.vet-btn{background:var(--green)}
+.product-order-btn.vet-btn:hover{background:#146040}
 
-/* BUNDLE CARD */
-.bundle-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:2rem}
-.bundle-card{background:#0d2540;border-radius:14px;padding:2rem;display:flex;gap:1.5rem;align-items:center}
-.bundle-icon{width:56px;height:56px;background:rgba(232,134,26,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.bundle-icon svg{width:28px;height:28px;stroke:#e8861a;fill:none;stroke-width:1.8}
-.bundle-text h3{color:#fff;font-size:16px;font-weight:600;margin-bottom:0.3rem;font-family:'Playfair Display',serif}
-.bundle-text p{color:#7fa8cc;font-size:13px;font-weight:300;margin-bottom:0.75rem}
-.bundle-price{color:#e8861a;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:0.75rem}
-.bundle-btn{background:#e8861a;color:#fff;padding:9px 20px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;border:none;cursor:pointer;display:inline-block;transition:background 0.2s}
-.bundle-btn:hover{background:#d4761a}
+/* ── BUNDLES ── */
+.bundles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:2.5rem}
+.bundle-card{background:var(--navy);border-radius:14px;padding:2rem;display:flex;flex-direction:column;gap:1rem}
+.bundle-top{display:flex;align-items:center;gap:14px}
+.bundle-icon{width:52px;height:52px;background:rgba(232,118,26,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bundle-icon svg{width:26px;height:26px;stroke:var(--orange);fill:none;stroke-width:1.8}
+.bundle-icon.vet-icon{background:rgba(26,122,74,0.25)}
+.bundle-icon.vet-icon svg{stroke:#4caf50}
+.bundle-name{color:#fff;font-family:'DM Serif Display',serif;font-size:19px;line-height:1.3}
+.bundle-desc{color:#7faed4;font-size:14px;font-weight:300;line-height:1.65}
+.bundle-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:0.25rem}
+.bundle-price{font-family:'DM Serif Display',serif;font-size:30px;color:var(--orange)}
+.bundle-btn{background:var(--orange);color:#fff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:7px;text-decoration:none;border:none;cursor:pointer;transition:background 0.15s}
+.bundle-btn:hover{background:var(--orange-hover)}
+.bundle-btn.vet-bundle-btn{background:#1a7a4a}
+.bundle-btn.vet-bundle-btn:hover{background:#146040}
 
-/* TESTIMONIALS */
-.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.testimonial-card{background:#fff;border:1px solid #dce7f0;border-radius:12px;padding:1.75rem}
-.stars{color:#e8861a;font-size:14px;margin-bottom:0.75rem;letter-spacing:2px}
-.testimonial-text{font-size:15px;color:#3a5a78;line-height:1.7;font-style:italic;margin-bottom:1rem;font-weight:300}
-.testimonial-author{font-size:14px;font-weight:600;color:#0d2540}
-.testimonial-role{font-size:12px;color:#7a96ac;margin-top:2px}
+/* ── TESTIMONIALS ── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.t-card{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:1.75rem;position:relative}
+.t-card::before{content:'\201C';position:absolute;top:12px;left:18px;font-family:'DM Serif Display',serif;font-size:60px;color:var(--blue-light);line-height:1}
+.stars{color:var(--orange);font-size:13px;letter-spacing:3px;margin-bottom:0.75rem}
+.t-text{font-size:15px;color:var(--text-mid);line-height:1.7;font-weight:300;font-style:italic;margin-bottom:1.1rem;padding-top:0.5rem}
+.t-author{font-size:14px;font-weight:600;color:var(--navy)}
+.t-role{font-size:12px;color:var(--text-light);margin-top:1px}
 
-/* AUTHOR SECTION */
-.author-section{background:linear-gradient(135deg,#0d2540 0%,#1a3a5c 100%);padding:5rem 2rem}
-.author-inner{max-width:1100px;margin:0 auto;display:flex;gap:3rem;align-items:center}
-.author-photo{width:160px;height:160px;border-radius:50%;overflow:hidden;flex-shrink:0;border:4px solid #e8861a;box-shadow:0 0 0 8px rgba(232,134,26,0.15)}
-.author-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.author-content h2{font-family:'Playfair Display',serif;color:#fff;font-size:30px;font-weight:700;margin-bottom:0.3rem}
-.author-title{color:#e8861a;font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem}
-.author-bio{color:#a0bcd8;font-size:15px;line-height:1.75;max-width:560px;font-weight:300;margin-bottom:1.5rem}
-.awards{display:flex;flex-wrap:wrap;gap:8px}
-.award{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#a0bcd8;font-size:12px;padding:6px 14px;border-radius:20px;font-weight:300}
+/* ── AUTHOR ── */
+.author-section{background:linear-gradient(160deg,var(--navy) 0%,#1a3d6b 100%);padding:5rem 2rem}
+.author-wrap{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:center}
+.author-photo-ring{width:200px;height:200px;border-radius:50%;border:4px solid var(--orange);padding:4px;background:var(--orange);flex-shrink:0;box-shadow:0 0 0 12px rgba(232,118,26,0.12)}
+.author-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;display:block}
+.author-right h2{font-family:'DM Serif Display',serif;color:#fff;font-size:36px;margin-bottom:0.3rem;letter-spacing:-0.3px}
+.author-title-tag{color:var(--orange);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.1rem}
+.author-bio{color:#8ab8d8;font-size:16px;line-height:1.8;font-weight:300;max-width:580px;margin-bottom:1.5rem}
+.awards-row{display:flex;flex-wrap:wrap;gap:8px}
+.award-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);color:#a8c8e8;font-size:11px;padding:6px 14px;border-radius:20px;font-weight:400}
+@media(max-width:768px){.author-wrap{grid-template-columns:1fr;text-align:center}.author-photo-ring{margin:0 auto}.awards-row{justify-content:center}}
 
-/* CTA STRIP */
-.cta-strip{background:#e8861a;padding:4rem 2rem;text-align:center}
-.cta-strip h2{font-family:'Playfair Display',serif;color:#fff;font-size:34px;font-weight:700;margin-bottom:0.75rem}
-.cta-strip p{color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:2rem;font-weight:300}
-.btn-white{background:#fff;color:#e8861a;padding:14px 32px;border-radius:7px;font-size:15px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block}
-.btn-white:hover{background:#fff8f0;transform:translateY(-1px)}
+/* ── CTA STRIP ── */
+.cta-strip{background:var(--orange);padding:4.5rem 2rem;text-align:center}
+.cta-strip h2{font-family:'DM Serif Display',serif;color:#fff;font-size:38px;margin-bottom:0.75rem;letter-spacing:-0.3px}
+.cta-strip p{color:rgba(255,255,255,0.88);font-size:17px;margin-bottom:2rem;font-weight:300}
+.btn-cta-white{background:#fff;color:var(--orange);font-size:16px;font-weight:700;padding:15px 36px;border-radius:9px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.15s;letter-spacing:0.2px}
+.btn-cta-white:hover{background:#fff8f0;transform:translateY(-1px)}
 
-/* FOOTER */
-footer{background:#071828;padding:2.5rem 2rem}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
-.footer-logo{color:#7fa8cc;font-size:14px}
-.footer-logo strong{color:#a0bcd8;font-family:'Playfair Display',serif}
-.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.footer-links a{color:#4a6880;font-size:13px;text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:#a0bcd8}
-.footer-copy{color:#2a4060;font-size:12px;width:100%;text-align:center;margin-top:0.5rem}
+/* ── FOOTER ── */
+footer{background:#071525;padding:3rem 2rem}
+.footer-inner{max-width:1140px;margin:0 auto}
+.footer-top{display:flex;gap:3rem;flex-wrap:wrap;justify-content:space-between;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid #0f2a42}
+.footer-brand{max-width:280px}
+.footer-logo-text{font-family:'DM Serif Display',serif;color:#fff;font-size:18px;margin-bottom:0.5rem}
+.footer-tagline{color:#3d6080;font-size:13px;font-weight:300;line-height:1.6}
+.footer-col h4{color:#fff;font-size:13px;font-weight:600;margin-bottom:1rem;letter-spacing:0.5px}
+.footer-col a{display:block;color:#3d6080;font-size:13px;text-decoration:none;margin-bottom:0.5rem;transition:color 0.15s}
+.footer-col a:hover{color:#7fa8cc}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{color:#1e3a50;font-size:12px}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{color:#1e3a50;font-size:12px;text-decoration:none}
+.footer-legal a:hover{color:#3d6080}
 
-/* AI CHAT */
-.chat-widget{position:fixed;bottom:28px;right:28px;z-index:1000}
-.chat-fab{width:56px;height:56px;background:#e8861a;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(232,134,26,0.5);transition:transform 0.2s}
-.chat-fab:hover{transform:scale(1.07)}
-.chat-fab svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
-.chat-notif{position:absolute;top:-3px;right:-3px;width:20px;height:20px;background:#0d2540;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600}
-.chat-panel{position:absolute;bottom:68px;right:0;width:320px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.2);border:1px solid #dce7f0;overflow:hidden;display:none;flex-direction:column}
+/* ── COOKIE BAR ── */
+.cookie-bar{position:fixed;bottom:0;left:0;right:0;background:var(--navy);border-top:1px solid rgba(255,255,255,0.1);padding:1rem 2rem;z-index:500;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;transform:translateY(0);transition:transform 0.3s}
+.cookie-bar.hidden{transform:translateY(110%)}
+.cookie-text{color:#a8c8e8;font-size:13px;font-weight:300;max-width:700px;line-height:1.5}
+.cookie-text a{color:var(--orange);text-decoration:none}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+.cookie-accept{background:var(--orange);color:#fff;font-size:13px;font-weight:600;padding:8px 20px;border-radius:6px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.15s}
+.cookie-accept:hover{background:var(--orange-hover)}
+.cookie-decline{background:transparent;color:#6b8aaa;font-size:13px;padding:8px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.cookie-decline:hover{color:#a8c8e8;border-color:rgba(255,255,255,0.3)}
+
+/* ── CHAT WIDGET ── */
+.chat-widget{position:fixed;bottom:28px;right:28px;z-index:400}
+.chat-fab{width:58px;height:58px;background:var(--navy);border-radius:50%;border:2px solid rgba(255,255,255,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform 0.2s,box-shadow 0.2s}
+.chat-fab:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(0,0,0,0.35)}
+.chat-fab svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8}
+.chat-notif{position:absolute;top:-2px;right:-2px;width:19px;height:19px;background:var(--orange);border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700}
+.chat-panel{position:absolute;bottom:72px;right:0;width:330px;background:#fff;border-radius:18px;box-shadow:0 12px 50px rgba(0,0,0,0.18);border:1px solid var(--border);overflow:hidden;display:none;flex-direction:column}
 .chat-panel.open{display:flex}
-.chat-head{background:#0d2540;padding:1rem 1.25rem;display:flex;align-items:center;gap:12px}
-.chat-avatar{width:36px;height:36px;background:#e8861a;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.chat-avatar svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
-.chat-head-info h4{color:#fff;font-size:14px;font-weight:600}
-.chat-head-info p{color:#7fa8cc;font-size:11px;font-weight:300}
-.chat-online{width:8px;height:8px;background:#4caf50;border-radius:50%;margin-left:auto;flex-shrink:0}
-.chat-messages{padding:1rem;display:flex;flex-direction:column;gap:10px;max-height:260px;overflow-y:auto}
-.msg-bot{background:#f0f5fa;border-radius:12px 12px 12px 2px;padding:10px 14px;max-width:88%;align-self:flex-start}
-.msg-user{background:#0d2540;border-radius:12px 12px 2px 12px;padding:10px 14px;max-width:88%;align-self:flex-end}
-.msg-bot p,.msg-user p{font-size:13px;line-height:1.5}
-.msg-bot p{color:#2a4060}
+.chat-header{background:var(--navy);padding:1.1rem 1.25rem;display:flex;align-items:center;gap:12px}
+.chat-av{width:38px;height:38px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-av svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.8}
+.chat-header-info h4{color:#fff;font-size:14px;font-weight:600}
+.chat-header-info p{color:#7fa8cc;font-size:11px;font-weight:300}
+.chat-status{width:8px;height:8px;background:#4caf50;border-radius:50%;margin-left:auto;flex-shrink:0}
+.chat-msgs{padding:1rem;display:flex;flex-direction:column;gap:10px;max-height:250px;overflow-y:auto}
+.msg-bot{background:var(--blue-soft);border-radius:14px 14px 14px 3px;padding:11px 14px;max-width:90%;align-self:flex-start}
+.msg-user{background:var(--navy);border-radius:14px 14px 3px 14px;padding:11px 14px;max-width:90%;align-self:flex-end}
+.msg-bot p,.msg-user p{font-size:13px;line-height:1.55}
+.msg-bot p{color:var(--text-dark)}
 .msg-user p{color:#fff}
-.chat-quick{padding:0 1rem 0.75rem;display:flex;flex-direction:column;gap:6px}
-.quick-btn{background:#fff;border:1px solid #b8cce0;border-radius:20px;padding:7px 16px;font-size:12px;color:#1a3a5c;cursor:pointer;text-align:left;transition:all 0.15s;font-family:'Source Sans 3',sans-serif}
-.quick-btn:hover{background:#e8f2fb;border-color:#7fa8cc}
-.chat-input-row{border-top:1px solid #e8f0f8;padding:0.75rem 1rem;display:flex;gap:8px;align-items:center}
-.chat-input{flex:1;font-size:13px;padding:8px 12px;border-radius:20px;border:1px solid #d0dce8;background:#f7f9fc;color:#1a1a2e;outline:none;font-family:'Source Sans 3',sans-serif}
-.chat-input:focus{border-color:#7fa8cc}
-.chat-send-btn{background:#e8861a;border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.2s}
-.chat-send-btn:hover{background:#d4761a}
-.chat-send-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5}
-.typing{display:none;align-items:center;gap:4px;padding:10px 14px;background:#f0f5fa;border-radius:12px 12px 12px 2px;width:fit-content}
-.typing span{width:6px;height:6px;background:#7fa8cc;border-radius:50%;animation:bounce 1s infinite}
-.typing span:nth-child(2){animation-delay:0.15s}
-.typing span:nth-child(3){animation-delay:0.3s}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.chat-quick-btns{padding:0 1rem 0.8rem;display:flex;flex-direction:column;gap:6px}
+.qbtn{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:8px 16px;font-size:12px;color:var(--navy);cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;font-weight:500;transition:all 0.15s}
+.qbtn:hover{background:var(--blue-soft);border-color:#7fa8cc}
+.chat-input-row{border-top:1px solid var(--border);padding:0.8rem 1rem;display:flex;gap:8px;align-items:center}
+.chat-inp{flex:1;font-size:13px;padding:8px 13px;border-radius:20px;border:1.5px solid var(--border);background:#f7fbff;color:var(--text-dark);outline:none;font-family:'DM Sans',sans-serif;transition:border 0.15s}
+.chat-inp:focus{border-color:#7fa8cc}
+.chat-send{background:var(--orange);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background 0.15s}
+.chat-send:hover{background:var(--orange-hover)}
+.chat-send svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5}
+.typing-dots{display:none;align-items:center;gap:4px;padding:11px 14px;background:var(--blue-soft);border-radius:14px;width:fit-content}
+.typing-dots span{width:6px;height:6px;background:#7fa8cc;border-radius:50%;animation:tdot 1s infinite}
+.typing-dots span:nth-child(2){animation-delay:.15s}
+.typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
-/* MOBILE */
-@media(max-width:768px){
-  .hero-inner{flex-direction:column}
-  .hero h1{font-size:32px}
-  .hero-stats{min-width:100%;width:100%}
-  .nav-links{display:none}
-  .author-inner{flex-direction:column;text-align:center}
-  .awards{justify-content:center}
-  .author-bio{margin:0 auto 1.5rem}
-  .chat-panel{width:290px}
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero-wrap{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero h1{font-size:38px}
+  .audience-content.active{grid-template-columns:1fr}
+  .aud-visual{min-height:200px}
+}
+@media(max-width:600px){
+  .chat-widget{bottom:16px;right:16px}
+  .chat-panel{width:calc(100vw - 32px);right:0}
 }
 </style>
 </head>
@@ -193,58 +270,62 @@ footer{background:#071828;padding:2.5rem 2rem}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-inner">
+  <div class="nav-wrap">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 3L4 7v10l8 4 8-4V7L12 3z"/><path d="M12 3v18M4 7l8 4 8-4"/></svg>
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 3L4 8v8l8 5 8-5V8L12 3z"/><path d="M12 3v18"/><path d="M4 8l8 5 8-5"/></svg>
       </div>
-      <div>
-        <div class="nav-logo-text">RMPS Publishing</div>
-        <div class="nav-logo-sub">instrumentlearning.com</div>
-      </div>
+      <div class="nav-brand">RMPS Publishing <small>instrumentlearning.com</small></div>
     </a>
     <div class="nav-links">
-      <a href="#products">Books &amp; Cards</a>
-      <a href="#why">Why RMPS</a>
+      <a href="#products">Products</a>
+      <a href="#audience">Who it's for</a>
       <a href="#testimonials">Reviews</a>
       <a href="#author">About Rick</a>
     </div>
-    <a href="#products" class="nav-cta">Shop now</a>
+    <a href="#products" class="nav-order">Order Now</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Trusted by sterile processing professionals worldwide
+  <div class="hero-wrap">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.5.5-2.5 2.5.5 3.5L6 9l-3 1.5.5-3.5L1 4.5 4.5 4z"/></svg>
+        HSPA Official Reference · CIS &amp; CRCST Aligned
       </div>
-      <h1>The <em>definitive</em> resource for surgical instrument education</h1>
-      <p class="hero-sub">Textbooks, coaching cards, and lectures from Rick Schultz — two-time educator of the year and the industry's most trusted instrument authority for human and veterinary care.</p>
-      <div class="hero-btns">
-        <a href="#products" class="btn-primary">Browse all products</a>
-        <a href="https://www.instrumentlearning.com/lectures" class="btn-outline" target="_blank">Watch free lecture</a>
+      <h1>Master surgical instruments. <em>For humans and animals alike.</em></h1>
+      <p class="hero-sub">The most comprehensive educational resource in sterile processing — from the operating room to the veterinary suite. Written by the industry's most trusted expert.</p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn-hero">Order Now →</a>
+        <a href="https://www.instrumentlearning.com/lectures" class="btn-ghost" target="_blank">Watch a free lecture</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <h3>By the numbers</h3>
-      <div class="stat-row">
-        <div class="stat-num">35+</div>
-        <div class="stat-label">Years dedicated to surgical instrument education</div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-num">2×</div>
-        <div class="stat-label">Educator of the year — IAHCSMM &amp; AHA</div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-num">1,100</div>
-        <div class="stat-label">High-resolution photos in flagship textbook</div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-num">Top 30</div>
-        <div class="stat-label">Most influential in healthcare sterile processing</div>
+    <div class="hero-right">
+      <div class="hero-books">
+        <div class="book-img-wrap">
+          <div class="hero-price-tag">From $68</div>
+          <div class="book-placeholder vet">
+            <svg class="book-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <div class="book-label">Veterinary</div>
+            <div class="book-title-text">The World of Surgical Instruments for Animal Health</div>
+          </div>
+        </div>
+        <div class="book-img-wrap large">
+          <div class="book-placeholder large">
+            <svg class="book-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <div class="book-label">Flagship Textbook</div>
+            <div class="book-title-text">The World of Surgical Instruments</div>
+          </div>
+        </div>
+        <div class="book-img-wrap">
+          <div class="book-placeholder" style="background:linear-gradient(160deg,#7a3800,#c96a10)">
+            <svg class="book-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <div class="book-label">Coaching Cards™</div>
+            <div class="book-title-text">Instrument Coaching Cards™ Set</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -252,153 +333,173 @@ footer{background:#071828;padding:2.5rem 2rem}
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-inner">
-    <div class="trust-item"><div class="trust-dot"></div> HSPA official reference material</div>
-    <div class="trust-item"><div class="trust-dot"></div> CIS &amp; CRCST exam preparation</div>
-    <div class="trust-item"><div class="trust-dot"></div> CE credits available for lectures</div>
-    <div class="trust-item"><div class="trust-dot"></div> Human &amp; veterinary applications</div>
-    <div class="trust-item"><div class="trust-dot"></div> Used in hospitals nationwide</div>
+  <div class="trust-wrap">
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>HSPA Official Reference</div>
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>CIS &amp; CRCST Exam Prep</div>
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>35+ Years of Expertise</div>
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Human &amp; Veterinary Editions</div>
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>2× Educator of the Year</div>
+    <div class="trust-item"><div class="trust-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Used in Hospitals Nationwide</div>
   </div>
 </div>
 
-<!-- WHY -->
-<section class="section" id="why">
+<!-- AUDIENCE SECTION -->
+<section class="audience-section" id="audience">
   <div class="section-inner">
-    <div class="section-header">
-      <h2>Why professionals choose RMPS</h2>
-      <p>From the OR to the sterile processing department and the veterinary suite, our materials set the standard for instrument knowledge.</p>
+    <div class="eyebrow">Who it's for</div>
+    <h2 class="section-title" style="margin-bottom:1.5rem">Built for your world,<br>wherever you work.</h2>
+    <div class="audience-tabs">
+      <button class="aud-tab active" onclick="switchAud('vet')">🐾 Veterinary</button>
+      <button class="aud-tab" onclick="switchAud('human')">🏥 Healthcare</button>
     </div>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-        </div>
-        <h3>Photo-driven learning</h3>
-        <p>Over 1,100 high-resolution photos make instrument identification and inspection intuitive for any experience level.</p>
+
+    <!-- VET -->
+    <div class="audience-content active" id="aud-vet">
+      <div class="aud-text">
+        <span class="eyebrow">Veterinary professionals</span>
+        <h2>The first textbook written specifically for veterinary instrument care.</h2>
+        <p>Whether you're a vet surgeon, technician, or practice manager, this is the resource your team has been missing. Covers infection control, sharpness testing, instrument identification, and care protocols designed for animal health settings.</p>
+        <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-for-animal-health-a-definitive-inspection-textbook.html" class="aud-cta vet" target="_blank">Order Vet Edition — $68 →</a>
       </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <div class="aud-visual">
+        <div class="aud-visual-inner">
+          <div class="aud-badge vet">Veterinary Edition</div>
+          <div class="aud-book-mock vet">
+            <div class="aud-book-mock-title">The World of Surgical Instruments for Animal Health</div>
+            <div class="aud-book-mock-line"></div>
+            <div class="aud-book-mock-line vet-accent"></div>
+            <div class="aud-book-mock-line"></div>
+            <div class="aud-book-mock-line" style="width:70%"></div>
+            <div class="aud-book-mock-line vet-accent" style="width:55%"></div>
+          </div>
+          <div class="aud-price-bubble">
+            <div class="price">$68</div>
+            <div class="price-label">Paperback · Ships fast</div>
+          </div>
         </div>
-        <h3>Certification-aligned</h3>
-        <p>Content maps directly to HSPA's CIS and CRCST exam outlines so every minute of study time counts.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <h3>Proven in the field</h3>
-        <p>Used by sterile processing departments, OR nurses, surgical techs, and vet practices across the country.</p>
+    </div>
+
+    <!-- HUMAN -->
+    <div class="audience-content" id="aud-human">
+      <div class="aud-text">
+        <span class="eyebrow">Sterile processing &amp; OR professionals</span>
+        <h2>The gold standard reference for surgical instrument education.</h2>
+        <p>Used by sterile processing technicians, OR nurses, and department directors across the country. 1,100+ high-resolution photos, 20 tabbed sections, and content aligned to HSPA's CIS and CRCST exam outlines. The resource serious professionals rely on.</p>
+        <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments.html" class="aud-cta" target="_blank">Order Flagship Book — $114 →</a>
       </div>
-      <div class="why-card">
-        <div class="why-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      <div class="aud-visual">
+        <div class="aud-visual-inner">
+          <div class="aud-badge">Flagship Textbook</div>
+          <div class="aud-book-mock">
+            <div class="aud-book-mock-title">The World of Surgical Instruments</div>
+            <div class="aud-book-mock-line"></div>
+            <div class="aud-book-mock-line accent"></div>
+            <div class="aud-book-mock-line"></div>
+            <div class="aud-book-mock-line" style="width:70%"></div>
+            <div class="aud-book-mock-line accent" style="width:55%"></div>
+          </div>
+          <div class="aud-price-bubble">
+            <div class="price">$114</div>
+            <div class="price-label">Hardcover · Ships fast</div>
+          </div>
         </div>
-        <h3>Veterinary edition available</h3>
-        <p>The first textbook of its kind written specifically for veterinary surgical instrument care and inspection.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRODUCTS -->
-<section class="section section-alt" id="products">
+<section class="section section-bg" id="products">
   <div class="section-inner">
     <div class="section-header">
-      <h2>Books &amp; Learning Tools</h2>
-      <p>Choose the format that fits your learning style or your department's training needs.</p>
+      <div class="eyebrow">All products</div>
+      <h2 class="section-title">Every resource, every format.</h2>
+      <p class="section-sub">Individual books, coaching card sets, and money-saving bundles — all with direct order links.</p>
     </div>
     <div class="products-grid">
-
-      <!-- Human book -->
+      <!-- Flagship -->
       <div class="product-card featured">
-        <div class="product-top">
-          <div class="featured-badge">Most popular</div>
-          <div class="product-tag">Flagship Textbook</div>
-          <h3>The World of Surgical Instruments</h3>
+        <div class="product-card-top">
+          <div class="featured-ribbon">Most Popular</div>
+          <div class="product-tag">Flagship Textbook · Human</div>
+          <div class="product-name">The World of Surgical Instruments</div>
         </div>
         <div class="product-body">
-          <div class="product-price-wrap">
-            <div class="product-price">$114</div>
-            <div class="product-price-label">hardcover</div>
-          </div>
+          <div class="product-price-row"><span class="product-price">$114</span><span class="product-price-desc">hardcover</span></div>
           <ul class="product-features">
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> 1,100+ high-res inspection photos</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Lay-flat spiral binding</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> 20 tabbed sections for quick reference</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> FAQ deep-dives throughout</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> HSPA CIS &amp; CRCST aligned</li>
+            <li><div class="feat-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>1,100+ high-res inspection photos</li>
+            <li><div class="feat-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Lay-flat spiral binding</li>
+            <li><div class="feat-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>20 tabbed reference sections</li>
+            <li><div class="feat-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>HSPA CIS &amp; CRCST aligned</li>
+            <li><div class="feat-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>FAQ deep-dives throughout</li>
           </ul>
-          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments.html" class="product-btn" target="_blank">Order now →</a>
+          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments.html" class="product-order-btn orange-btn" target="_blank">Order Now — $114 →</a>
         </div>
       </div>
-
-      <!-- Vet book -->
+      <!-- Vet -->
       <div class="product-card">
-        <div class="product-top vet">
-          <div class="product-tag">Veterinary Edition</div>
-          <h3>The World of Surgical Instruments for Animal Health</h3>
+        <div class="product-card-top vet-top">
+          <div class="product-tag">Textbook · Veterinary</div>
+          <div class="product-name">Surgical Instruments for Animal Health</div>
         </div>
         <div class="product-body">
-          <div class="product-price-wrap">
-            <div class="product-price">$68</div>
-            <div class="product-price-label">paperback</div>
-          </div>
+          <div class="product-price-row"><span class="product-price">$68</span><span class="product-price-desc">paperback</span></div>
           <ul class="product-features">
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Vet-specific instrument content</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Infection control protocols</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Sharpness testing guidance</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Care &amp; handling standards</li>
+            <li><div class="feat-dot vet-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Vet-specific instrument content</li>
+            <li><div class="feat-dot vet-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Infection control protocols</li>
+            <li><div class="feat-dot vet-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Sharpness testing guidance</li>
+            <li><div class="feat-dot vet-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Care &amp; handling standards</li>
+            <li><div class="feat-dot vet-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>First book of its kind for vets</li>
           </ul>
-          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-for-animal-health-a-definitive-inspection-textbook.html" class="product-btn vet-btn" target="_blank">Order now →</a>
+          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-for-animal-health-a-definitive-inspection-textbook.html" class="product-order-btn vet-btn" target="_blank">Order Now — $68 →</a>
         </div>
       </div>
-
-      <!-- Coaching cards -->
+      <!-- Cards -->
       <div class="product-card">
-        <div class="product-top cards">
-          <div class="product-tag">Best for Teams</div>
-          <h3>Instrument Coaching Cards™</h3>
+        <div class="product-card-top cards-top">
+          <div class="product-tag">Training Tool · Both Audiences</div>
+          <div class="product-name">Instrument Coaching Cards™</div>
         </div>
         <div class="product-body">
-          <div class="product-price-wrap">
-            <div class="product-price">$77</div>
-            <div class="product-price-label">per set</div>
-          </div>
+          <div class="product-price-row"><span class="product-price">$77</span><span class="product-price-desc">per set</span></div>
           <ul class="product-features">
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Full-color flashcard format</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Ideal for new hire training</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Visual inspection point guides</li>
-            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div> Quick tray-accuracy drills</li>
+            <li><div class="feat-dot cards-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Full-color flashcard format</li>
+            <li><div class="feat-dot cards-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Perfect for new hire training</li>
+            <li><div class="feat-dot cards-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Visual inspection point guides</li>
+            <li><div class="feat-dot cards-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Quick tray-accuracy drills</li>
+            <li><div class="feat-dot cards-dot"><svg viewBox="0 0 10 10"><polyline points="2,5 4,8 8,2"/></svg></div>Works alongside either textbook</li>
           </ul>
-          <a href="https://www.instrumentlearning.com/instrument-coaching-cards-tm.html" class="product-btn cards-btn" target="_blank">Order now →</a>
+          <a href="https://www.instrumentlearning.com/instrument-coaching-cards-tm.html" class="product-order-btn orange-btn" target="_blank">Order Now — $77 →</a>
         </div>
       </div>
-
     </div>
-
     <!-- Bundles -->
-    <div class="bundle-row">
+    <div class="bundles-grid">
       <div class="bundle-card">
-        <div class="bundle-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <div class="bundle-top">
+          <div class="bundle-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+          </div>
+          <div class="bundle-name">Human Book + Coaching Cards™</div>
         </div>
-        <div class="bundle-text">
-          <h3>Human Book + Coaching Cards Bundle</h3>
-          <p>The flagship textbook paired with the coaching card set — the complete training package for any SP department.</p>
+        <div class="bundle-desc">The complete sterile processing training package — flagship textbook paired with the full coaching card set for your whole department.</div>
+        <div class="bundle-bottom">
           <div class="bundle-price">$161</div>
-          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-instrument-coaching-cardstm-set.html" class="bundle-btn" target="_blank">Order bundle →</a>
+          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-instrument-coaching-cardstm-set.html" class="bundle-btn" target="_blank">Order Bundle →</a>
         </div>
       </div>
       <div class="bundle-card">
-        <div class="bundle-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <div class="bundle-top">
+          <div class="bundle-icon vet-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="bundle-name">Vet Book + Coaching Cards™</div>
         </div>
-        <div class="bundle-text">
-          <h3>Vet Book + Coaching Cards Bundle</h3>
-          <p>The Animal Health textbook paired with coaching cards — complete training for veterinary instrument care.</p>
+        <div class="bundle-desc">Everything your veterinary team needs — the Animal Health textbook plus coaching cards for fast, visual instrument reference at the practice.</div>
+        <div class="bundle-bottom">
           <div class="bundle-price">$136</div>
-          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-instrument-coaching-cards.html" class="bundle-btn" target="_blank">Order bundle →</a>
+          <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-instrument-coaching-cards.html" class="bundle-btn vet-bundle-btn" target="_blank">Order Bundle →</a>
         </div>
       </div>
     </div>
@@ -406,30 +507,30 @@ footer{background:#071828;padding:2.5rem 2rem}
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section" id="testimonials">
+<section class="section section-blue" id="testimonials">
   <div class="section-inner">
     <div class="section-header">
-      <h2>What professionals are saying</h2>
-      <p>From sterile processing directors to veterinary surgeons — trusted across both disciplines.</p>
+      <div class="eyebrow">Reviews</div>
+      <h2 class="section-title">Trusted by professionals across both disciplines.</h2>
     </div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
+      <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"There is only one true instrument whisperer. Rick has inspired me to understand metals and instruments on a more technical level than I ever thought possible."</p>
-        <div class="testimonial-author">L.D.</div>
-        <div class="testimonial-role">CST, CRCST, CHL, CIS, CER, AGTS</div>
+        <p class="t-text">"There is only one true instrument whisperer. Rick has inspired me to understand metals and instruments on a more technical level than I ever thought possible."</p>
+        <div class="t-author">L.D.</div>
+        <div class="t-role">CST, CRCST, CHL, CIS, CER, AGTS</div>
       </div>
-      <div class="testimonial-card">
+      <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"The World of Surgical Instruments is an indispensable tool — organized by instrument family, making it an efficient study guide for anyone just learning to identify and inspect."</p>
-        <div class="testimonial-author">Sterile Processing Director</div>
-        <div class="testimonial-role">Regional Hospital System</div>
+        <p class="t-text">"The World of Surgical Instruments is an indispensable tool — organized by instrument family, it's the most efficient study guide I've found for certification prep."</p>
+        <div class="t-author">Sterile Processing Director</div>
+        <div class="t-role">Regional Hospital System</div>
       </div>
-      <div class="testimonial-card">
+      <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Out of all the speakers at the conference, I learned the most from Rick. He kept the entire audience engaged from start to finish — truly the best educational experience."</p>
-        <div class="testimonial-author">Conference Attendee</div>
-        <div class="testimonial-role">IAHCSMM Annual Conference</div>
+        <p class="t-text">"Out of all the speakers I attended, I learned the most from Rick. He kept the entire audience engaged from start to finish — truly the best educational session."</p>
+        <div class="t-author">Conference Attendee</div>
+        <div class="t-role">IAHCSMM Annual Conference</div>
       </div>
     </div>
   </div>
@@ -437,20 +538,20 @@ footer{background:#071828;padding:2.5rem 2rem}
 
 <!-- AUTHOR -->
 <section class="author-section" id="author">
-  <div class="author-inner">
-    <div class="author-photo">
-      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEpAOQDASIAAhEBAxEB/8QAHAAAAQQDAQAAAAAAAAAAAAAAAwIEBQYAAQcI/8QAThAAAgEDAwEFBAYHBgMGAwkAAQIDAAQRBRIhMQYTQVFhByJxgRQykaGxwQgjM0JS0fAVNGJyc+FDgrIkJTU2RHQmU/E3Y4OSk6KzwsP/xAAaAQACAwEBAAAAAAAAAAAAAAAAAQIDBAUG/8QALhEAAgEDBAIABQQDAAMAAAAAAAECAwQREiExQQVRExRhgfAicbHhMpGhUsHR/9oADAMBAAIRAxEAPwC3EVoiiEUkg1yjoA9taK0StYzzQJgytJIopFJI5piEYrVLxWsUwBkUnFFxWttAgeK1iiEVrFMAWK0RRCK0RnoKYAyKSRS2IAHqcVoigARFDIo5FIK0hASKQwo5FIYelGBjdhQ2FHYUNhSAARQ2FGNIYUAAYUJxR2FDYUABahsKKwobUCBnrWVh61lPJE6RitFaWRWqgXZBlaTt5opFaxTECIpOKIRzWiKZERitEUsisoAHitEUXFIchFZmYKqjLEngCnwC32EbaZ3+o2lkCJpPex9VeSPj5Ux1DVJp5O404YXOGlP5D+jTaLTGd0lKOdxy5GOPjXPr38Y7Q3O5Z+GlU/VW2XrsKl/e3kzpB3cEaj65G48+nnTO/sp5Sssl5cTxN7nGV9706CpmysVdsRxsMA528D5jxoZ0mMGQzCZpZAQAAcBfyrE7ipPlncp2NCltGKK2NJiaxM3f3SyISGzlcnzAz99RFxc63pkqlNUxG2MI6nOPPxFXmWAQ2wiSCMOUx7hHGKhtStY2hMcbESbSQ27JHrz0+FEaklumFS2pzWGiOsu27xOI9VtAFx+1i6j4r0PyNWrTtQstSg76xuo50xztPK/EdRXO9U07c25grHA98Lt6eJqHk7+wuvpVhJJCwYlZIzhgfXHHyrbSu3xI4t14uPMNjshFIYVVeyHbKLUEW01TZBd/VWQDakp9R+6fuNW3hl3Doa3xkpLKOHUpypvEgDChsKOy0NhTKxuwoTU5ZaBIMUhgWFCYUdhihOMUABYUJhRmobDigABHNZSyOayjIjpJFaIohFJxUSwGRSSKKetIxTFkQRWiKWRWiKYhBFJxRMUkimAKeVIojI+cDwHU+gqKneW9ONrd2D9QeJ8/hR52a4lJBxGOEHp5/H8qdWypAEZ1JyeQPD1rk3t1l6IvY9N4nx6ivi1Fv0NrDTMZYgAY8OtP0tXCBVGC3BBGMU/iiMjL7gDeGTwM09jtMlWycfw+XPUVjhTyjtyqYIxLYbgzs64OPdOCaye0kMZZGw44Kjj7fM1PRwSNPnYNnQkCsurdxDhIkQk8+OfStKpbGeVwslIvbaRIyOHU+8MdKhb2z3KdgYgjJCnBBq9X0G3l1G7y8qgbmBFVhjK4PIqiVPc0RnqRRrq0QozEDdjncc5quajG0bNkAoRjKnwq7ajbrgsFOQTyAOtQNzCpbcACQMrnxPnSjkrqpFHuImjd8Z6+J++rv7Pe1Ia4Gj6lN77HbbysfrHwQ+vr41XtQtwZHCgBvDnioW6thGGcBlPXg9D8a3UKriziXlsqkTvLChsKrns6199Z0k2944bULTCyk9ZE/df4+B9fjVmYV008rJ52UXF4YBhQXWnDChtQRGrrQHFO5BQHFIeRuwoZFGYUNhQAIjnpWVsjmsoEdKNJIpZFJxUSYjHNaIpWK0RUhA6wil4rVNADIprqTFLRgoJLnaMHB9TTxhTO+AMqLjlVyc+tUXVT4dNtGywoqtXSfHI1toXaVP3gOgqYt1GASoIPTjr8qa2UZNwFjTdjnOamYYhESW5Y9T61woRbZ7FyUUOrO3mYCPaAWO4nGOKfwWDJuJ3uzZO4n7hWrXBVdyqrHjzJx0p9CXkc5OB8a6NOmsGCrVkZHAsY25OfOgzwMvjjHl404JlEm1ZCRQbwychnIBHlWjSsGbU88kJqiMW5XHPGD1qB1FAP3Qj44BOcVM6k8ocu0wwg4GCBUFfXGwHMQwv7ynPWsNQ6NHKSK7d26bnQMD/AehNQWoRBWztJAHTGTnzq030UdyneRtl/DB6VCXsEjYO1SM/MGq1HBOcslN1RV79W3ZUjPA6io+9t0EOCm4n6rbqntSsxsYYYe8V3eXjxUe0eUy4BdchueDxxVieDJPfYiOzmoPoPaOyvmLGLeILkZ47t+CfkcH5V2ph1HHFcR1C2EkbKGHvDjIrrvZa7a/7NabeP9eS3Xf8A5h7p+8V0raeqODz/AJClpkmPWFBYYpywoTirznjZxQZBTlxQHFIY2cc0NhRnFDegQEjmspRHNZQB0kik4opFINRJAyK0RSzWiKkAjFapZFJqQCCKBdIrzu2cJuxyfkKdD64HqKZriVhkfXfAz55rFfbxSOt4japJj/SYgSXwFzxn0qUYIijuoy2eSAM0LT4Fii58SKlYkDA7sEY4FZKdLY7U6u4CCVUXJ3lyOoHP+wp7BcgDbHERgc5rI4BgZGSetL7lowOfgK1Qi0UTlGQkSSSMAF2c9AeaBfMCSDvIyB1pxaLukK4PHHXgVu8t3QDaCowfnVunbJUmk8FW1aRgjYSTr0Iqv3dzGiElti7c8qeatmqoFUs31vAfjVd1CJWVvcABPh4VjqReTpUmtJAyMsigRkEE7gynkHyPpQplK5JYSZUeHPFPZLBY2ZgrZHOB91NJoynusrBSeD/P1qnQ+xykmVrVUUzllYhSOc9CKhrsDICglvAY8D/KrNq9vw7Mv1RwemBVXuAN7gLnouM9fnU8ezLNkZqKhCGzwvr610L2byCTsusWeYZ5Fx4gE5H41Q76MYTyxgHzqx+ym5Cz6hYswzIqzoPPHDflWm2eJ4OX5COqnq9F6YUJxRyKGwreziDZxQZBxTlxQHFJgNnFCYU4cUF6QACeelZW2HNZQB0w0hhSzSTUSQOspRFJxUkAkitGlGkmpIRFdok12ex+i9nLUTahcN3UcjMFSEkHDMT4cHp5UHszpnaqws4rLtLLpr30SgNJHcbi5A+sVAyM9asuiypb6taXMiB0jmUY8i3uA/LJrS2rGeS7bBIlcsfmaor6Jbdo6dkqkE5RxuvxfnsGh1HHudw0a8cMw+fSiNqstq0bTrEgHG1pguftxmhWvaTRrK2la5ugoV9uCMZJ6AefyqE7U9rtCW0k/tGzEUCjcRcFVZh57eoHrgVmprOxuhOvJZmsFtj7SwGId5bzr45iUSj7VJpMXazTrqdbaCTLYztZSpA+B5rid5227M2Gqz2D6NdWtzGFkmjzsZFYAhj5ZBB+Yq0dnO02k6hG8cU9wssal1jvEyQMZBBOQR8Dmr3lbPYnD9W6w/z7nV7G7j74uTuGMnAxig69r0Maoy9OhJbGKYWNzo+pae6WdpfrPbon0ho8iMSMofCljzgEdPOoDUNS02xtLeSWIGRrp0uJZE7x4wFBVQDwuQc58qnJNLGUUfMQ2m4SNah2htzITHFcXDggBIYy+T8qg9W1fV3kXutB1GTkk7IDj8qiO1ntF0Tvf7PsZb2Wct9SBjn4YWo2yuNGvAs+pPdDI2rFLdck+o3ZzVXws7suV1OXCS/6TUl3rzRFhpF8hxgKV6ffQzcX/wBHVbiyuw+OpiPx5xSUu+yFsndRNHbc/VJPJ+dMtSs4SoktLmRQ3KlXI/OoOCLY1Kntf6/sRqF20tse9V4yVwQ4I/Gqvc3EKQM7Sqi43MS3QA1dtFnnWf6LcymWFuMSe9t4681W+2Nna6zJcQy2aC1aY3CoV4OVUYPh1XPzqfwoaVJv/hllcVXNwjDOPr/RRdR7VaVFlTeROxOQqNuOfLirL7JtSTUu1UZhhdCkUm7d12kDw65zioNtNtLJykNvHCoxxHGq9fhTzs3ZCO/uLiCWW3kMZjd4iQzqTnaSOeaSnSi9slc6NxUWJNJHa2Bzggg+tDNVb2aasdSsLqHvJWSCTEYlYs6clSpJ9RkfGrUa1Rlqjk5Fak6U3B9AX8aBIKcuOKA4psrG7igOKO9BekAE9aytnrWUAdKIpJojCkHFRRIRWjSiKRUkBo0kjilEfGkmpoiDuH22M4HDLiUH1U/zIqwaeYZNP3E5LgnPx5qs6izCAIv77AH8amLF1t7HawLJjBI8Dj8Kw1Hiq0egtI6rWL9Z/krGrdlbDWdUKwXs1jcc7JlC7l89ueAfWnMXYGy0/RtQ0oW6zR6lEY7m4c7pnyOu88g+PlT7T7ZbyVpWkWN1bhT6VNJBcsCrSKw8xnOKKcmtzXVp5WM5RyTXfZ9ZrfzXtzqF1PcXAVJ5mhUzSKoA2l889B0FO4dBaIXmoRsWLhYIYyuUV390YHTcc/dXT4dCtp5w1wDKeDtz7p+Q6001MQ3GpQRxd2lpYOxRYwNrTY27v+UEgepPlTafLIwjFLRBbiNORdG0p7GLjC7pCvQt/WB8BXNe2MMk1/cRGRgk8P0iIeBdOGA9dhJH+Wujauk8MJAKsG6cdT/Oufdoo3uSUDGKdcPDJjOyQfVI9OoI8s1CLcZLJrnQU6T0/mDjdh2b1SPtd3ENxGkLSBnOSO9XPTPgDXVu3fZ97ns8INK0uxUy2DWc6MiCSAFwwlgfoHOMHPODSey0Npqzr3iLFPESroTzG46geYz09CKuh067t191VkTbyrDIz+VavmHFHL+RjPGeDh0XZO4hiRH+ko0cBX35lbe+eCVGelK0o9otEuA0lsJLbeobZuKMD1909PiK6/NYXDyD/u6NST1HQ1K6f2dKzJcPMiBQeIxll+IJ5FUus2sYLlaqHDK/Y2CPe2jK6ss7buGzgBSag+1MC28pQfVI8+uKubpaWmpyNZhMRIVLDo8jEbsfAAD5mqr2sYTOHzkA1TKXCLKMN3I55qinc+9SCrADI5NO+zzhRviBkkil3SQqMna3AOPHpQ9XU7s5J8OnhVWuL260btFDexTOqzKEdV8CP51FRbzglPaSOmeyyBrfW9djClYmmMiD0bBq/MtVf2fd1cSXl/EmwTRxlv8AMc5H3Vamrbb5+GsnA8jj5h/b+AEgoElOH560B6tZiG8goDDmnD0B6QAj1rKw9aygDpZFJYUs0g9KSJA2rWKU1J8KkhNiW4pJpR5pNSIjDUG3SxYY7VYggedScUpkiWPPHU8458qh7pDiFt4GZ2UpnkY6k09iLC5Uqc55+IPhXLlLVNs9pa0I0qSgnwWPTdJtp1PfIu7GcgnNA1KxhtFPc3lzEo/hlPFK0i9uI1mOwYzgEkDA/OoHtJqcz7oIfeeTABxyT5AVp1KMNiuNGU6rT4MkinlfD3968Q6qJyA3pxUt2dtRNHI6RokcK8Dp08h5U1bQrmz0FRHNu1EjfJuPB/wjyI++oq2ttRXTf7xOk4JLLLwT8xUdMs7ouUoOL0PHRNdoJFWCYMzBzwg6g4Fc8ug11dKoOPyPrRu0usaxbxsncSNIAWBVSR8qoFlreppqYed4YbVhlmZGZz8xx8sUYcnkmpxpxUckjrIfSNRXWbcmJI2H0hVOMrnk/Kuv6NFc6ppkV9YaoGSQA4kiB4PgcVxXWlvNbtWtrQNKs7czFcKBnnrXV/ZVa3GjaFDZXLNIgG3I8PlUot9lNemsZiP9QsdVMZMN9bjPT9RyPPxqq6rBrqq7LqbOAMqm0Kp9Dirtqc3dF92UBJwPuqvXsySRFcDcx6Y+zNQb3JQhiOWVeC5ncKrttxxgDG0+IqI1qQlX3H3R6+NTF6SkrYAb3snw+dV3WWLEqMFemPU9Kpa3FJ4Ia9Xf3YCj3cHA86h7vRJ9VvIlikjjSFhI7P8AcBU4kbNv39QRg097Oz28U0ySyRo7nrJ0KgdKE9til78lp9nqhLW+hVlfupUQsPPbn86sr5qtez1Y4o9SgizsM4lBznO4HmrM4rfR/wAEebvc/MSz+bDd6C9HegyCpszIbvQHFOHFAkpAAYc1lYw5rKAOlmknpSjST0pIkINIaltSTzmpoixHyrRpRFJI5piI7UUX6VA23BbOT509+jnYjjAGOvwpvqQAWJ8fVepbTULwqG454wetc2tHFVnqPG1X8um+iK1HUpNPtTGYwMfwjx8MfGkdntNvhfjUdRCjZzHETkqx8T61Yr+xtVFtNMpCRPvYnnkcjr4Uyjuru6ikktdNd4mPDNIE3Dz5qcdnuaZ1W4vSueR3JdyzyqCwGWyQTRDgW5aQADpyaqd7da1HqHdQaKQVXO4zLg/A+dKGs67ErltCl7vGGLJlfjxmr41Mh8tJxWGv9gtYkkvnktoS0MRypxzk561CtpdtAdskXIAxkdfjT+ftMtvESbELMB9UuFVc/fUBqPamOa5aa4wqYxtB4JqLkjUqE8YwsfuHt41icPt90HPHXrVm0TV44P1R5B8jjFUB+1uiqVWe6ELYHUjFTGgXMGozh7a4jmTwYNyKWtFM4tLDLpqVylzCHDZG3IPUCqzq84ii3DnHTnrVl0fSppXFu31GBKnyPXNV3tZpxtpNm4t72MZ61RPK3HComtK6K/eSMV7zccnnPUGoC+Ys+T0H21atYgW30+2HgRwT41VZlHekO3BI4x4VW2VTY2QhQQc5XkmkaVp9/dXs15baXdXVqMLviQEAjqPjRJpPcO0AZ6etXH2WtnS71c/+p45/wip0YKpLDMlzcSoQ1xQ87IaXPYW1xcXSGKW4YERnqijpn1OamX60d6A9dGMVFYR52rVlVm5y5YBx1oL+NHcUB6bIAGHFAkpw9AkqIAD1rK2etZQB0g0k9KWelIY0EhJpBIrbH1pNSSImj1pJrZpBNMQ31PP0N2A3FMNj4U806Y/R4mDZUHHFCO1gVboRg1GaLOUuJbGXgoSvPlnisN2sNSO34mplSh9y4vJFd2xhfJDcY8KVGTEscJdW2rjpgfZUPBdIjrCQ6uDkkdCKk4pFmUsp5UjoKhGeo6Tjh/QTd26tJ9UHPSkm5tYbdkjWQ8Esd/rTtSshIOCQcAg02urVWVs7WfJyPSro5XAnLOFIZy3EDMSYzuYD6yg8CorUmgeOQbI8sMBSgI+fFO7hFLyKmQAAQBnnmo+a3LyN3bNtDEDjPNJyl7L4xiVa/wBJs7ybu5bO1lkJyC0QPH2VIafpen6ZAUjt4YmYDIVdufQ4qSgtAkm9lJceIprqplCKSANnOOvNVNssbTe5e+zSxxaRHO4KlVOCeQR4VQu2Vx3t17gUsxydvTNWAapjQo0VuRH8Kp8jfTbzeASo8fPmozlskU0lpy/Y07SzborSMAbIo8n1OKptxOrXDIOuM+PXyqw9r7mMTtFG+OOceHwqq98JH3Bug4z19fnVZGb3wLkUtEz7hhSFVfXxq5ezJVTTrtiw3d+BtzyPdFVKKEY3H6oGABXN9e7aah2Y9pjXulP7scMcU8DE7J15JUj58HwNarODlM5vk5KNHf2eoGbPShOai9A1i11nSLTVLJ99vdRCWMnqM9QfUHIPwqQL1tOEJc0F6KxoTmkMC9BejOaE9IAB61lYetZQB0dqQ1LbxpBoQwbUg0tqGaaEYaRWyaGxpiNk1Ca3utdQjvEHJXn1x1/Kpkk4LY4HU+A+dVjXe03Zo3dvpTa3YNqMkoWK3jlDuxPhxnB+NVXFPXTaRrsKvw68X72LTZ3cd3AGU+8q8t5ijaVdtsuI9wOxcoMcmqfp8stnMYSSEJymfD0qWjumWXv0JP8AGPxrlU5YZ6dpIstzcTdwqQkBzgFh4ZpK213AqySGXdncOeKiP7R2SpcAjAOQAenrT++7ToLYImxXPIP+9bE48tk2p7KCNXskggdgCWwDhR+VR6XWyZUZisfGMjqfGsm1MGAmVgGJ3D+vAVWNT1SOCdQWL5PTPu9ajncsUNsss8twi4wMY5+Rqv8AaHUY44GRSFyeQD1oF9qsdrbEvKDvH1c8D0qlahqMl3Ido43e6c0m2U1JRjuW211dp7LudzFQRgE9RSrq7axspZ5ZAC+dgAwB5AVXdIlCIrSLkL0UeJ9aY63qcl1cN7xOD18BVDzkip7DDVLyWSSRmJ3OcUm0G1k4G48k4zTZcM5Ibj8KeQsmw+6QF93IOKGVL2Fupnht9iABh0HiSa5d7cdKbTu0lhKFGJrNFJx1deDn7RXVtCtjf6zErcxxHvZD546D7fwqofpGRq9pYTn6y3DAH0K/7V3/ABlvijKozznmLjNWNJdD39HXtEVFz2ZunHv5urLkYz/xEH3Nj412cSV45025nsL23vtPuZLe6gcSRPwCGHQg9Pka9C+zP2jWfajbp1+qWOsoOY87UuPMx56HzX7M061N51IxQl0dC3cUhjQ8kH8awtWctMagvRGOaE9IAZxmsrTdaygDpDHg0JjVc172hdh9GDfT+1Gmhx/w4ZO+cnywmea532h9v2lQu8Wg6Bd3pHAlu5BAh9doy2PjipRpylwhOSR2MkZ60G9nhs4GuLyeK2hHWSZwij5mvMeue17t7q28W+owaXBgkixgC4H+dssfliqXfXeoavOX1K/urwgbme7naXA8+TjPpWiNtJ8lbqI9HdofbD2K0t3itbq51iZR0sY8x/8A6jYX7M1z/Xfbnrt1vTRNHstMjA/bXLGeQeRwMLn7a5ZsEjYRe7jUcZ52j+I+tLihknfEETFFyVHBPqx9avjbxX1IOoyS13tN2l7Q7xrGu3s0bc93JIUjb0CpgfI0w06NbSVJo3I7mTvUNuBkMpznJHmKI0Xd/XtAjHPOGTH349fnTqIQ/RbmIW8QkEPEu4ll9B4eNWqC4IanyekbC5N5p1lfyoInurWK42joQ6g8enJqSSU+4yNt28E+VNOxdq+sexfs1q1sm+6s9PRCo6vGpKsvxGMj50m3lDLvVgy46mvM39q7arhcPdHr/G3auqOXytn+fUkZLWGbcFPdyHkjGVP+9ROpWOoRqdkYkUcDD4I+2nNtcnYPey+c58cUYahxukbJGevhVMK2OUblCS/xeCAv7q9WHbLE4IXG3z+dV25lnlfdGkwIbIATIq5ahOrqcDAzgHHgfEVC3VwgkkZsBFACccsfHirvjL/xIzjUaxqIKWC/nCtLkAcYJ5oTRLGyIVJYcn1NTcjkwPgHOcDPh5A1FQxiW5ySdiZznofjUHUcir4WHuFZHS3ESnbn63wqI1EEN3CcjINTF1dCMNIvDZxjrUTI293bO5mBySeevNV4fJOSWMIBbKBnJ8PDx5pUjpGgYk5z0HSty3MawlV4CZz6+lSnY/R31S4S8nUm2jPuZ/fPn/KtVpaSuamlcGG8vIWtPUyY7I2TW2mtczJtmmO458PIVyr9IK5Dy2FiBubcXIrul0gWMJGMAL4V5s9rF5Je9s5Io2Zu6AQYOOa9fOEaNHRHjg8Wqkq1VzlyynNtwA8ajgDgbaxSQQVcgqcqHOCD4YPnTiRLmP6yvt6HI3gelBDRP1TaT/8ALP5GsBp5L72X9rHaXR0jt9RVdVtUAUC4OJQPSQdfnmut9j+3vZ3tQBHZ3X0a8xzaXJCyZ/wno3yrzMo242TBcc4OVpJGyZWZlIY5yrZwfP0NVToxZNTaPYTHBweDQyTXnzsl7Ue0OiBLLUNur2iHaFnfEqDyWTx/5s11vsn267O9pAkVrd/Rr1utnckLJn/CejfKs0qUolsZpllPWsrR4JBHI86yqiR5aiiJcRQoCxH+UfH0A86cRW5dhGnvAnr03+p8gKUT3CmLIEjAd62fsQfnW5WMStE2d7DMpHG0eCj8662MGUNcFGZLe2XKA4U9N7eLH+ulN2IJEEB3DdnP8befwFY5MUZVuJGH6z/AvgvxPjWNILWP3lbvWwWKn9mvkB5mmAtWhY9xvZowcuyuAXPnz4eX206WKwVeGnXH8UauPXkEeNKg/tBlQIjSR43DdGrrgf8A16Viv3d2qyxRI8cio4EQGOfHr9lPAjNNWN7r6u/cj7S46YUnOPjS9JBe4Rf44WUY5zx4/ZSLbK6jHnBJnZfPOePzommDubu2LgYSbad3TrjmnHoHweq/0cm2+yTQ0Y8NE+Ph3jVrtfo0mi3xuLdD9ClbIGeEJOSPh+FNv0eJM+y3RwuP1T3EJ8srMwrpksMF7bNaXSB43GMmrLqzjc0dEuevoQs76dpW1x47Xs5OUVwHTp1IB86FICvJ6Dw29ane0HZ660V2aPdLaE+44Gdo8j6etQ0uXQ8HJ9K8dWtalvPTNHvLS7p3MNdNkbeAtGqke45O3d4kdcVGSRu8ik8nO7zFTN0FKhuoDbR6Go4Ahmxg46bagaZSGOoXDRRhRklWPQcHjrUckkkaDJy7Hw8R/tUleJ37KvUA9B0NAljDSHPGFCk4+rihLBRLLeSOlSRveJyu3j+dMb+5WOPceOcHPH4VJCC+1O8GnaTZy3dyp4jXgKPORuij48+Qq6dl/Z9a6a6X+tTJf3452hcRQnyUefqea6ll46pc7vaJyb7ydK2Wlby9FR7K9kLzWSt3fxva2PXY3DSep8h6V0aKG3srdLa3jVEjAwAPCn1zL0SNdqjw9KjrglQTzknr+P5V6u3tYUIaYI8dc3VS4nqmyL7RXkdnYzyM2AFLD7K8v6hcNPqV/qb5DyStHEfXx+wfjXdvaVdyxaHdMoLGJGA4+sxOF+81wC62jbGhDRwjarYxvPUsfic1VePThErZZyxqIXLYiGCozkNikOJlOJU3Y495c/eKdzptgSDPvPh3I8B4fMcmgJFLt7yP3Fz0D7fsz1FYcdGvIANFuzsxn+GT+dafumQqN27P8QNOdl3tyYy3O3O1T8q2VuSmO6JJ4/ZrzilhhkbP+sSOTxZdrfEVp1OyOYcHdgkeDDof96KA+x1kQpkh1G3Az0OB9lLjBZJoxn3l3qPUf7ZoxkMli0zt32ztrNILbXWMacATosjL6biM4+NZVTePcQRnkeFZUNEPQ9UifjUQRrOQSTxDnox8W+A/GkRgInfONx3YjB6s/ifgKcf3lVThEQe7n9yMdf686C225uAIx3aYwgJ/ZoOpP4mrkIVCoVWuXBYhsIDzvk68+g61kSqsbXLZdgSEB5Dv4k+g60O4be6FFPdbSIs9cA8k+pPNZcue4tkU4BgOQDwfePWjgDe0WxdYXLF41cnHQnk/P1p5fErcyHnLBJOR5geFIuFUCIr+/bKenpj8qVdgsInGP1lqh49OPyoa5DPAa8YpqDsQRsnV+vqD1pV8piubgAAbJSwwcjrnrQ77DzbtxxJCjgkY5x/tR9XyzmXk99Aj5bxOB/KpPsS6PSf6NM73Hs+uVOT3eqXDLuGOGIbOK65AVYAnLY6fGuR/oroD2CnO4lZJzICepz/9K60yMgOOP4QK6C4OfLkfPCklv3bqrKRjBFc+7TdnJLRpL2wjea3XJkgQZdPNlHiPNfs8q6JakPEBz6U1ut0TEgdetZ7i3hcR0TNNrd1Laeum/wCzit0YpIhNCwkQrwyHI/r41HSKxPCsFOcZ4NXL2gdiZrmd9a7Lzx2N+x3XFvJxb3XqwH1X/wAX25qmaRdajc3j2V9ol/b30JCyxiFmwfMEDBB8CCa8ld2Fa2lhrK9ns7PyVK6jnh+jRgeNQzFeeM56D+VPOynZa+7SzNcGVrPSlbD3Srgy46rGD1x03dB6mrnofYg3YSfWEeK2HP0fo8vlnyX7zVymVYrdYYY0jjUbI41GFUDoAPAV0PG+MlUfxKywvXs5/lPMRpp0qDy+36/srdlp+naHYfQNGs1t4QcsRy7H+JmPLMfM0C5hPVufn1qVnTJIyceJpjMeecEfGvVRiksI8fKTbyyNaEjGR8PM+lM7mHI3YJ+FTDleSfDoKa3e0x8Ee/wOcVYkQbOH+3e+FtaWemxNiS5dpmAPIVeB95rj0KoSXcExQjJA8T4ff91W32nazHr3a++vLd+8t0ItLQqPrIhwWHxYn7qqd4FTbbADEWTIccl/H5Dp9tcq4qa6jfo6VGGmCQJVknmwXHeSnJY9B6n0pF2UeTMYxGg2oDzx5/M80dR3duSP2k4IGD0TxyPX8Ky3AjRrllykRwgK5DP4A/jWfHRaNZbUISrvBG4AyjEgim8jRhu6Ro7ls4Aiyf6FO4reO7cQzOQGJd5M8gdaTaKtpNBuAVd4ww8Rn8aMIMsBZRSSXCGbaiPldqn08TRrY7LiNm6K2G+B4NLlUwXBAyDFIcemDWXqbbiYcg7twz68/nS4AG6iORoyN21iM4rKNqRP0gS8/rUV/PqKylLCeAW6JOZ+4te7bKvMA8gI6IPqj59fsoMxCQFCMSSgO/htTqF+J6/ZREJnuJLqdSYo/fkHn4In24HwpA3SzPPdHftO+Tj6zHovz/CrABziQQWyshBIf7M8U4FsTDayErgwkYz5MaTudreN2zkXD548WAP9CnIbdp0JwQYp2U4HAyAft4NP2Bk+Gt7Jx02NGTnyP3dayT3rWzYDkK8fLZ6HPy61v3jpqjp3Nz5fxDz+VaHOnkD/AIVzk8fxDz+VAghG+GzcEY7poz8iev20S/KnTLST3cqHjYjrwcjP20iMt/Z6dcRXLc9AAwz9vFZfk/2HOnP6mYPjHgRgnP2cU+w6PUP6L8Ji9nQXHvLKRj48j8a6wFJJ5J3DiuYfo0t/8M3do31gIpQMYGCuD8Ogrqao2SMf4gM10FssGCXIWHCL8BWTR71zznpx41gUr1JI8fWue/pAe0CLsL2MZYZ1TV9Szb2I8YwRh5f+UdPXFShBzkooWcIq3tU9pxstRuOz/ZN4nuYTsur8jckDg+9HGOjMOhY8DoMmqV2I9pXavs/dxpc3Q1axaXdPFcL+tkVyCQsg5B94YB448qovZqHvo3nSV8IPdzzu8ef661IbBEAd2AOM+R/oCvW23j7f4OHHOezzt5fVoVv0vjo9baVrWna3o1vq+mzi4tbhcqejA+KsP3WHiKRdyBs7efSvMvYX2kp2K1sLO7yaNdSBb+Ff3fATKP41GPioI8q9HpNDLDHNBPHcQToJIZYzlJEIyrKfEEdK89d2ny1XQnldHZt67r01NrAKTO4gYOelRtwMPjrg+PjUpJt2nB5HXHWo64X3mYg4x9tUImxpKAzgZPT7Kp/tQ1g6R2Xu3VwkssTop8VXHvEevIHxardMTgqOWIwAOtcK9t2rfT5hYW0oYSXBt4/Ad1Acyt8GmYDP/wB1Sqy0QbJUo65pHJmPdJ9JIXcv6uJT545I+H400hiEkhVidigvKw6hfH+vWjX0weQBC3cxDbED9pPz60mRe6hW36O2JJcjlfJfz+dcbs6ol3aacuE5kO1VA8OmK1eNGrrCu0xw5BK9HPif68qPA3cRG6H1yTHCA3Knxb5fiaabO8JBX9mMuc8Yz4/hR1+4GL+rhCAnvJuWz4J1H8/spxHxbyT8e9+rjVlyD5n5D7zTXdJPcHgb5DwB0H+38qNPKu4BGBjhXYuOQx8T8zzRnsMdDadTHHJICzKo/Wbui84GD40aRe97mRejxAHjxHFBuwZJYrEEFUbfMwPDN4L8vzp4BixibBBSUp9bpnBxS9oWR3Y2sVzaRs7ShkBQ7Yiw6nxHxrKVpd21vbsnfTp75OEk2jwrKvhpcVkpkpZ2Bz4hiSEFS4xJJjP1z0X5D7yaydGiCwKAxjPvY6NIf5dKNZIxnku5my8eZORndITwPz+VGtVSMvMy7lgG7njc5+r9/Pyqvkv4G8sH0e3miLKWidGLE+8XIIYAePh9lLhBawu1H7jpJ19SD+NFgWR4rkche6Jdtu7nOft60Oy99pYwP2sBHTxHP5UctC6NwjdaXkYJJASXg8cHn8a1Hzb3if4ElXnjg88fOlaeQZthHEsLp08x/MCk2BLziMtt72F4zxnwPH3UR6B9hLU77e8QEE4SUE+h5x9tJviTZXUWWxJb7sL0JUg8+g5rejASXaxn/jQvHwM5JH8wKDckkRqc4dWQ4PPIoW7QPs9X/o9MI3aPOEltVXA+AI/CuwFeSeOua4/7AEYrLMSv6qGPkfCuyKBg+Q6H0rpM5/Yy1m+s9L0u51O/mWC0tojJNKxwEVRya8O9u9T1v2v+0eS9tYZFtyRHaRE8QQg8fM9T6mu4+3zV9T7b6+vs27LCWeGB1fV5Yh7u/qsRPTC9T64FWj2ZezzS+x2ivc3SqHiQyTOR4KMsT9la6cIwhmXLKXN5xE4RpemPojalpkjmR7O5aAseMkD+ZpjrFysduwX3QeT8eM/jQO23aS6srqbUbZEuo9VujdpHcjEn61iRyvHTHwpvrsl9Dbq1zYqFIy3cy5wDjwPNeqo1VGGl8pLP3PP1qEp1dfT4+xXJbCbWNVt9OilI+kShNw8PM1689nWkP2Y7NWuhy3Pe2MQC2u8ndCT1XP8ACTk+hPrXnD2Q2MOrdrraZCHjgfJ8wc9CPDpXr+OxiksOQuCuelebvpqVZs7lBNU0hrJE4yTkEcetNZ1AQufD76lIQzwlJDl0HXPUefxqG1hhEjHO3H2AVlRYysdr9UOkaJd30SlrlQsVrGOslxIdkSj/AJiD8Aa82e0SdbbV57K3lEgtEXTYm6lkj5kkz5vKznNdx7R34murnVZgv9n9l7V7+Qt/xLyRCsCHPioO74sK80alPLcXBd97yucDJycn/c/jWS8nhJGq1hltgLdUy80gykI4UnG9j0H5/AUmNJLiYgktI5LM33k/nSrs7WFsOUhJLcdWPXn7qXju7Xj9pcdfAqo/n+Arn46Nv1NXciyvuizsQBIgRzjw+fj8aRdKI4hanG5TumOOd3ln0/E0W32qGuCAVj4QHxY9Ps60EQmaQIzZzl5GJxgdTyfGj/2AFIsQ7t2HkYhAD0HiTWncW0TSn3imFjwR7z+H86Id8soaNSScJGo5wOgoEiLczHDDu7QhBx9ZifeP28UfsDD2UQXTS8mGlE+5ierFhz8s0b/0dyPdBDowz1PJHH20SHH0e7TcQCisBjOSD93WhRHMdyo2+9Dn3hycEHA8jQIHu2sRnxzWUgkeKk8VlQyS2J2c9zbRQHdk/r5gfM/V+78aRcARQJESOf10gx59B9n41uLF1ebpiQjEySY5KoPD8q3EPpl4XnIG8mWQngBR4flVvPBH9xcH6qW2t2B3O2+UE9dwwo+w/fQdPzHfW27cSJO7bB2k54x99bTdcXveMCqljLJtH1VXmh3rBLqcr/8AN7xec9efvpt8MX0N2xa3vosjBiuNpwceOOtZ/d9RQEFe6uNpwfDOK3qoAvrkqAFJEihegzzxQ9V5upGUDDhXUDgDIBwKT2+zHz9w1n/2a9Ungw3BHB6DNC7QIILmSAL+ymA4ORyaNcENcTEHAkCyDAwORQe0xDzxOMYljjbCn4fyo/8AoHrL9HRN2jai3Q+6P/21fu0Op340G2sdEjMms6g5t7ckZS3xw08h8FUc+pwB1qkfo3KP7H1BP4mH4V07s3IN91HgZBOPXHhXU4WfRzXu8Eb2P7KaX2W0hdO01GJyWnuZOZbmT96R26kk5NVn2960NG7Az2cM2y61Z/oUXmFPMjfJAR866W8ZVMnFeZ/btrf9s+0GazhYPbaLGLRMHI744eVvkdq/8tbvG0XcXCzwt2ZbuqqNJs4rrZ+me0G0tDnukb3cnwGAMfZVm7UqBAxA42YA6/OoTtVZyR61BqsKlyp3Eg8U/wBV1BLyx3qCrFec+Femp/p+JGXOf+HLmtXwpR4xgX7C7xbTt1NbsP20BdcEAblPP3H7q9gdnbkXmhxOOce6fHpXh/sjM1h2ysLtOiTqDk9Q3un7jXsX2aXIl0CSIPkxy5+VeXvYaZ5O1TllFmvIMhWQ4dORnx9Kp3bmSOLRJLzkRLkygdRjqvx/mKukpyOT4ZNRf9m2lwu67iWZBKsqo/1Sy/VJHjg8/ZWaLwNo4L7cGk7Oey7Ruzc3Gpa9etqGo+eFw5HwBMac+C1wAOFEt0QCR7kSnrk/vD4fnXU/0lNYOt+1W7tICJU06JLCLn9/68h//MwHy9K5Tfyo0+2LJhiyqZ6nzP281zK88zb9HRoxxBL2ItYe8l2sD3SDfKQei+PzpbPJcTlgCXc7UXqcdAPs4rTjuoBAfrykPISOVA6D86LbYiie5I979nEAeQSOvwA+81Sl0W57FXO1SsCsGSDIzjG5j1+/7hQ5l7q3EWMyTHdJkcqvh/OlW6KzjvOYohvk9R5fPpQ5Wknm5PvyHjJ4o+oDW5cxWpZOZJPciwTnHi3y/OnOmQrFa3EIJGYN3A64IPNDsQLm4nlAbuu5ZYFxzgc5+ZyadaflrmJOSZInTA6ng8ULlCb2NWjAu8eSBJA64AznjIHw4oNiwM23djfC68jPhS9Pb/tVsVZhuJXKfWwRjA+2h2ZMd5bHdtw5TPXA6GlHoH2CALIpAPSspxZnbFsCj3SRyM/lWVAkSuO7sSwUo1020HyjXr9px9lbUbbAnJDXL7RnwjX19T+FKulD3XcxKTsxBGBzk+J+OaVfsJLju4SXSMLBF8v981fx/BFA9m2xZiMtctsTnoi/W+04Hypve4adW6iSBTz444/KnN/gTmOPDLEBCm394jqfmc0PUIlRoUUcR7onOerDk/Drj5UPh/QS5Qi/O4W0hJPeWw5Pjt4/Kh3OXjtXJ+tBs6fwkilzf+H2r4GUkeMkn59KR1s4Dg+5MyE58wD0pPsF0OizGK1k5O+32Z8DtJGPwpnrTiS1087lyshjwOv1gck+PWnEZ/7uhPjFMy9fAjI/A0zvirBIy31byJgMdcnBNHYdHsT9Gof903jYHL48/CukRbbPUe8PuhieDXM/0a2xod2efr55rp+pxK6q2fDPTrXVxvhnOf0N9tNdg7PdkNQ7QTldllbtMFz9Z+iL82IFeP4RPNG811IZLqd2lnkP7zsSzfeTXXf0nO0+2w0bsXbSe/OVvb7HUIpxEnzOW+AFckIAULwQANo8a9P4W2+HRc3zL+DheVrapqC6BTon0cqcEeGB/vUDfJgEY48hU5cSHackkjpnwqGvACT4n8K6lRLBmt8kLsZblXyQQQeB6ivVPsUvTPYXKce8qkV5anUYYDjjJbHTFelPYGWFruBJG0DkV5jyi/VH7ndtn+lnWLjoAOp6cUy12+t9J025v7khYLKB55T6Iu4/hUgBkmTwHQ1yf9JXVzZezmbTIn23Gt3KWMeD/wAMe/Kfkq4+dcrOE5GjGWkeWNSvJ7o3WsXLA3WoTySHn3suxZj9+KioYw0jFhmKIbpOevp9tOdWuBLOSmO7jGyIAY4H9ZpvN+qhS2BGT78jA569Afh+dcpvc6fQlTNc3G4ktLMfjTm4kQyBYzmGFdkZIxu9T8aHb/qoHn2kM5KREHGPM/ZxRLONC++QZhhG5wvj5ffS+nsf1Nyr3dukAI3MRJLxyPIfZz86aODMDAje9OCox1RV6n59KNIzTMTI53yHJbr60rQyJNSjuzvKSHuo9q4OzkdPM0LdieyF6eqrcW6IjEEGMBTjOQRihWLBLq3LKTtlwdpwevIHkaVGe6miJGQkwBx480K9BinnXBXZMeD1HPSlwkPG5pW7q5TPBjuMHHB61p/1N/gZUx3Hj1HvfjWr79Xd3A27CsmcE52+NK1FcX11wQO83YPUfGjgRt27meZNx4kbw9ayk6jxfTHLHcQ2WHJyAc1lJ7MFnBOWP6t3uG3fqIiwKn99uFrdkRHI05YfqI943D6zHgD+vKtSfsrz/Wj/ADpa/wDhFz/rx/gatXQPsRaLtkMkiblgUyNzj3j0+/FAlB+iYxl1lDnz94cn7qMv7Gf/ADJ+dDH90u//AMH8TS+gdg2ANjODjdHMjDPUggj7K0q5s7pcg7HRwT18RxW4P7lqP+SP/qFKtP7vd/6A/wCoULr9g9/noVZgGyvF93Kqsoz14OOPtqOuHP0xV3YDGPI88OKktO/9T/7c1HS/361+H/8AcULlA+z1/wDo7ER6JdnGP1uPurqGtSIthuY4RRlm8l8T9lcz/R7/APL9x/rn8Ku3bb/ypq//ALGb/pNdmnHVNL9jk1JaVJnlftNrEvabtzqWuTElZ5z3Qz9WMcIB6bQKXMCo5zuPUkcD/eojRP2bf52qRtej/OvdU4qOILg8tVbm3N9ALgjb7pxgYJyKjLjB4zgHkCpW9/upqMvf7y39eNKutJfay1rJF3uAjsfLH316Y9gkW3Rt2OTgDBz4V5nvP2Df1+8K9Q+wb/wGL415fyUtU1+x3LdYj9zptziOLaB08+a8wfpXa4Ju2FlosLuP7NscMB0Ekx3MT67FUf8ANXqC56GvGf6R/wD9s3aX/Vh//hSuLcPFM326zM5wgzI0zZMUHvZC5Bb90fM/hQVDTzKGYCSV/eJ6DPjRn/uc3+sv4GtWn99b/Sf/AKa5uOEbW+WbndGl/VgCOMbEx0OPH59aPMFightwPfb9ZKQ3n9UfIfjTSD9z4ij3n7af/MaWeWPG6QBo+9aOBS6Pdv3a7Rnao+sfy+2nVqO4a3A93u5B0PIGR0oWkf8AmzTf8q/iaJJ//v8AnTeyEtxF/mK4uEClSsp69RyetC1nC3VwNpTIVgpOcZAPzo+vf+L33+s35U31P9q/+VfwpS7BdfnoFqORcSkAJujRgDz1Aot2yveSkBsOikBjk/VFNr36w/0h+FOrn+9v/ox/9IofYLoRqxY3Eb5JLRISW88Y49OKyia79ez/APaR/gayoTeJMnD/ABR//9k=" alt="Rick Schultz, The Instrument Whisperer"/>
+  <div class="author-wrap">
+    <div class="author-photo-ring">
+      <img src="data:image/jpeg;base64,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" alt="Rick Schultz — The Instrument Whisperer"/>
     </div>
-    <div class="author-content">
+    <div class="author-right">
       <h2>Rick Schultz — The Instrument Whisperer™</h2>
-      <div class="author-title">Author · Inventor · Lecturer · President &amp; CEO, RMPS Publishing</div>
-      <p class="author-bio">With over 35 years dedicated to the surgical instrument industry, Rick has built the most trusted independent educational resource in sterile processing. His textbooks, articles, and lectures have shaped how thousands of healthcare and veterinary professionals inspect, handle, and care for surgical instruments. Monthly columnist for <em>Process</em> magazine, entrepreneur-in-residence at Kent State University, and a 2019 FBI Citizens Academy graduate.</p>
-      <div class="awards">
-        <div class="award">IAHCSMM Educator of the Year 2002</div>
-        <div class="award">AHA Educator of the Year 2006</div>
-        <div class="award">Top 30 Most Influential in Healthcare SP</div>
-        <div class="award">HSPA Official Reference Author</div>
-        <div class="award">FBI Citizens Academy 2019</div>
+      <div class="author-title-tag">Author · Inventor · Lecturer · President &amp; CEO, RMPS Publishing</div>
+      <p class="author-bio">With over 35 years dedicated to surgical instrument education, Rick has built the most trusted independent resource in sterile processing. His textbooks, lectures, and articles have shaped how thousands of healthcare and veterinary professionals inspect, handle, and care for surgical instruments. Monthly columnist for <em>Process</em> magazine. Entrepreneur-in-residence, Kent State University.</p>
+      <div class="awards-row">
+        <div class="award-pill">IAHCSMM Educator of the Year 2002</div>
+        <div class="award-pill">AHA Educator of the Year 2006</div>
+        <div class="award-pill">Top 30 Most Influential in Healthcare SP</div>
+        <div class="award-pill">HSPA Official Reference Author</div>
+        <div class="award-pill">FBI Citizens Academy Graduate 2019</div>
       </div>
     </div>
   </div>
@@ -459,49 +560,81 @@ footer{background:#071828;padding:2.5rem 2rem}
 <!-- CTA STRIP -->
 <section class="cta-strip">
   <h2>Ready to elevate your instrument knowledge?</h2>
-  <p>Whether you're training a new team, preparing for certification, or caring for animals — we have the right resource for you.</p>
-  <a href="#products" class="btn-white">Browse all products →</a>
+  <p>Whether you're training a department, prepping for certification, or caring for animals — the right resource is one click away.</p>
+  <a href="#products" class="btn-cta-white">Browse &amp; Order Now →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"><strong>RMPS Publishing, LLC</strong><br>instrumentlearning.com · Stow, Ohio</div>
-    <div class="footer-links">
-      <a href="https://www.instrumentlearning.com/published-articles" target="_blank">Articles</a>
-      <a href="https://www.instrumentlearning.com/lectures" target="_blank">Lectures</a>
-      <a href="https://www.instrumentlearning.com/about-author" target="_blank">About Rick</a>
-      <a href="https://www.instrumentlearning.com" target="_blank">Full site</a>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-text">RMPS Publishing</div>
+        <p class="footer-tagline">The world's most trusted surgical instrument education resource — for human and veterinary professionals.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments.html" target="_blank">The World of Surgical Instruments</a>
+        <a href="https://www.instrumentlearning.com/the-world-of-surgical-instruments-for-animal-health-a-definitive-inspection-textbook.html" target="_blank">Instruments for Animal Health</a>
+        <a href="https://www.instrumentlearning.com/instrument-coaching-cards-tm.html" target="_blank">Instrument Coaching Cards™</a>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="https://www.instrumentlearning.com/published-articles" target="_blank">Published Articles</a>
+        <a href="https://www.instrumentlearning.com/lectures" target="_blank">Lectures &amp; Speaking</a>
+        <a href="https://www.instrumentlearning.com/about-author" target="_blank">About Rick Schultz</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://www.instrumentlearning.com/contact" target="_blank">Get in touch</a>
+        <a href="https://www.instrumentlearning.com" target="_blank">instrumentlearning.com</a>
+        <a href="https://www.linkedin.com/in/rickschultz" target="_blank">LinkedIn</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 RMPS Publishing, LLC. All rights reserved.</div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 RMPS Publishing, LLC · Stow, Ohio · All rights reserved</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
   </div>
 </footer>
 
-<!-- AI CHAT WIDGET -->
+<!-- COOKIE BAR -->
+<div class="cookie-bar" id="cookieBar">
+  <p class="cookie-text">We use cookies to improve your experience on this site. By continuing you agree to our <a href="#">Privacy Policy</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="dismissCookie()">Decline</button>
+    <button class="cookie-accept" onclick="dismissCookie()">Accept</button>
+  </div>
+</div>
+
+<!-- CHAT WIDGET -->
 <div class="chat-widget">
   <div class="chat-panel" id="chatPanel">
-    <div class="chat-head">
-      <div class="chat-avatar">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 3v4M8 7h8M7 11V9a5 5 0 0110 0v2"/></svg>
+    <div class="chat-header">
+      <div class="chat-av">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V9a5 5 0 0110 0v2"/><circle cx="12" cy="16" r="1" fill="white" stroke="none"/></svg>
       </div>
-      <div class="chat-head-info">
+      <div class="chat-header-info">
         <h4>Ask the Instrument Guide</h4>
         <p>Powered by RMPS expertise</p>
       </div>
-      <div class="chat-online"></div>
+      <div class="chat-status"></div>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="msg-bot"><p>Hi! I can help you find the right RMPS product, answer questions about certification prep, or point you toward Rick's lectures. What brings you here today?</p></div>
+    <div class="chat-msgs" id="chatMsgs">
+      <div class="msg-bot"><p>Hi! I can help you find the right book, answer questions about certification prep, or point you to Rick's lectures. What can I help with?</p></div>
     </div>
-    <div class="chat-quick" id="quickBtns">
-      <button class="quick-btn" onclick="sendQuick(this,'Which book is right for me?')">Which book is right for me?</button>
-      <button class="quick-btn" onclick="sendQuick(this,'I\'m studying for the CIS exam')">I'm studying for the CIS exam</button>
-      <button class="quick-btn" onclick="sendQuick(this,'I need materials for my veterinary practice')">I need materials for my vet practice</button>
-      <button class="quick-btn" onclick="sendQuick(this,'Tell me about the bundle deals')">Tell me about the bundle deals</button>
+    <div class="chat-quick-btns" id="quickBtns">
+      <button class="qbtn" onclick="sendQ(this,'Which book is right for me?')">Which book is right for me?</button>
+      <button class="qbtn" onclick="sendQ(this,'I\'m studying for CIS or CRCST')">I'm studying for CIS or CRCST</button>
+      <button class="qbtn" onclick="sendQ(this,'I need resources for my vet practice')">I need resources for my vet practice</button>
+      <button class="qbtn" onclick="sendQ(this,'Tell me about the bundle savings')">Tell me about the bundle savings</button>
     </div>
     <div class="chat-input-row">
-      <input class="chat-input" type="text" id="chatInput" placeholder="Type a question…" onkeydown="if(event.key==='Enter')sendMsg()"/>
-      <button class="chat-send-btn" onclick="sendMsg()">
+      <input class="chat-inp" type="text" id="chatInput" placeholder="Type a question…" onkeydown="if(event.key==='Enter')sendTyped()"/>
+      <button class="chat-send" onclick="sendTyped()">
         <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
       </button>
     </div>
@@ -514,52 +647,59 @@ footer{background:#071828;padding:2.5rem 2rem}
 
 <script>
 const responses = {
-  'Which book is right for me?': "Great question! If you work in a hospital sterile processing department or OR, <strong>The World of Surgical Instruments</strong> ($114) is the gold standard — 1,100 photos and fully CIS/CRCST aligned. If you're in veterinary practice, the <strong>Animal Health edition</strong> ($68) was written specifically for you. Want to see both?",
-  "I'm studying for the CIS exam": "You're in great hands! <strong>The World of Surgical Instruments</strong> is actually an official HSPA reference for the CIS exam. Many professionals credit it as the most practical study resource available. You might also pair it with the <strong>Coaching Cards™</strong> for quick visual review — the bundle is $161. Would you like a direct link?",
-  'I need materials for my veterinary practice': "Rick wrote <strong>The World of Surgical Instruments for Animal Health</strong> specifically for veterinary professionals — it covers instrument inspection, infection control, sharpness testing, and care & handling. At $68 it's a practical reference the whole team can use. There's also a <strong>bundle with Coaching Cards™</strong> for $136. Want to order?",
-  'Tell me about the bundle deals': "We have two great bundles! <strong>Human Book + Coaching Cards™</strong> for $161 (saves vs. buying separately), and the <strong>Vet Book + Coaching Cards™</strong> for $136. The coaching cards are perfect for staff training — full-color visual reference cards. Scroll up to the Products section to order, or ask me anything else!",
+  'Which book is right for me?':'Great question! If you work in a hospital, OR, or sterile processing department — <strong>The World of Surgical Instruments</strong> ($114) is the gold standard, used by professionals nationwide and aligned to CIS/CRCST exams. If you\'re in veterinary practice, the <strong>Animal Health edition</strong> ($68) was written specifically for you. Want to jump to the products section?',
+  "I'm studying for CIS or CRCST":"You're in the right place. <strong>The World of Surgical Instruments</strong> is an official HSPA reference for the CIS exam — many professionals say it's the most practical study resource available. You can also pair it with the <strong>Coaching Cards™</strong> for quick visual review. The bundle is $161 and saves you money vs. buying separately.",
+  'I need resources for my vet practice':'Rick wrote <strong>The World of Surgical Instruments for Animal Health</strong> specifically for veterinary professionals — it covers instrument inspection, infection control, sharpness testing, and care & handling for vet settings. At $68 it\'s a practical reference the whole team can use. Pair it with the Coaching Cards™ for $136 as a bundle.',
+  'Tell me about the bundle savings':'Two bundles available: <strong>Human Book + Coaching Cards™</strong> for $161, and the <strong>Vet Book + Coaching Cards™</strong> for $136. Both combine the textbook with the full coaching card set — ideal for training a whole department or practice. Scroll to the Products section to order!'
 };
-const fallback = "That's a great question! For the most detailed answer, I'd recommend visiting <a href='https://www.instrumentlearning.com' style='color:#1a3a5c'>instrumentlearning.com</a> or reaching out to Rick directly through the contact page. Is there anything else I can help with?";
+const fallback = "Great question! For the most complete answer, visit <a href='https://www.instrumentlearning.com' style='color:var(--navy);font-weight:500'>instrumentlearning.com</a> or use the contact page to reach Rick directly. Is there anything else I can help with?";
 
 function toggleChat(){
   const p=document.getElementById('chatPanel');
-  const n=document.getElementById('chatNotif');
   p.classList.toggle('open');
-  if(p.classList.contains('open')){n.style.display='none';}
+  document.getElementById('chatNotif').style.display='none';
 }
-function sendQuick(btn,text){
+function sendQ(btn,text){
   document.getElementById('quickBtns').style.display='none';
   addMsg(text,'user');
   showTyping(()=>addMsg(responses[text]||fallback,'bot'));
 }
-function sendMsg(){
+function sendTyped(){
   const inp=document.getElementById('chatInput');
-  const val=inp.value.trim();
-  if(!val)return;
+  const v=inp.value.trim();
+  if(!v)return;
   inp.value='';
   document.getElementById('quickBtns').style.display='none';
-  addMsg(val,'user');
+  addMsg(v,'user');
   showTyping(()=>addMsg(fallback,'bot'));
 }
-function addMsg(text,type){
-  const msgs=document.getElementById('chatMessages');
-  const div=document.createElement('div');
-  div.className=type==='user'?'msg-user':'msg-bot';
-  div.innerHTML='<p>'+text+'</p>';
-  msgs.appendChild(div);
+function addMsg(html,type){
+  const msgs=document.getElementById('chatMsgs');
+  const d=document.createElement('div');
+  d.className=type==='user'?'msg-user':'msg-bot';
+  d.innerHTML='<p>'+html+'</p>';
+  msgs.appendChild(d);
   msgs.scrollTop=msgs.scrollHeight;
 }
 function showTyping(cb){
-  const msgs=document.getElementById('chatMessages');
+  const msgs=document.getElementById('chatMsgs');
   const t=document.createElement('div');
-  t.className='typing';
+  t.className='typing-dots';
   t.style.display='flex';
   t.innerHTML='<span></span><span></span><span></span>';
   msgs.appendChild(t);
   msgs.scrollTop=msgs.scrollHeight;
-  setTimeout(()=>{msgs.removeChild(t);cb();},1200);
+  setTimeout(()=>{msgs.removeChild(t);cb();},1300);
+}
+function dismissCookie(){
+  document.getElementById('cookieBar').classList.add('hidden');
+}
+function switchAud(which){
+  document.querySelectorAll('.aud-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.audience-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('aud-'+which).classList.add('active');
+  event.target.classList.add('active');
 }
 </script>
-
 </body>
 </html>
